@@ -1,0 +1,2492 @@
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0F1B3D">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>تحليل خطة التفويج - 1447 هـ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0F1B3D;
+  --primary-light: #1F2D5C;
+  --gold: #C9A961;
+  --gold-light: #E0C988;
+  --gold-soft: #F5EFE0;
+  --emerald: #0E5C4A;
+  --emerald-light: #4FA88D;
+  --bg: #FAFBFC;
+  --surface: #FFFFFF;
+  --surface-2: #F4F6F9;
+  --border: #E5E8EE;
+  --text: #16213E;
+  --text-soft: #5C6478;
+  --text-muted: #98A0B0;
+  --red: #DC4444;
+  --orange: #E8923B;
+  --shadow-sm: 0 1px 3px rgba(15, 27, 61, 0.06);
+  --shadow-md: 0 4px 12px rgba(15, 27, 61, 0.08);
+  --shadow-lg: 0 10px 32px rgba(15, 27, 61, 0.12);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-lg: 24px;
+}
+
+- {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  }
+
+html, body {
+margin: 0;
+padding: 0;
+background: var(–bg);
+font-family: ‘Tajawal’, -apple-system, BlinkMacSystemFont, sans-serif;
+color: var(–text);
+font-size: 15px;
+line-height: 1.55;
+overscroll-behavior: none;
+min-height: 100vh;
+min-height: 100dvh;
+}
+
+#app {
+max-width: 480px;
+margin: 0 auto;
+min-height: 100vh;
+min-height: 100dvh;
+background: var(–bg);
+position: relative;
+padding-bottom: 80px;
+}
+
+/* ========== TOP BAR ========== */
+.topbar {
+position: sticky;
+top: 0;
+z-index: 50;
+background: var(–bg);
+padding: 16px 20px 12px;
+border-bottom: 1px solid var(–border);
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+.topbar.transparent {
+background: transparent;
+border-bottom: 1px solid transparent;
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+background: rgba(250, 251, 252, 0.85);
+}
+.topbar-title {
+font-size: 18px;
+font-weight: 800;
+color: var(–primary);
+}
+.topbar-sub {
+font-size: 11px;
+font-weight: 500;
+color: var(–text-muted);
+margin-top: 2px;
+}
+.topbar-back {
+width: 36px;
+height: 36px;
+border-radius: 50%;
+background: var(–surface);
+border: 1px solid var(–border);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 18px;
+color: var(–primary);
+cursor: pointer;
+transition: all 0.2s;
+}
+.topbar-back:active { transform: scale(0.92); background: var(–surface-2); }
+
+/* ========== BOTTOM NAV ========== */
+.bottomnav {
+position: fixed;
+bottom: 0;
+left: 50%;
+transform: translateX(-50%);
+width: 100%;
+max-width: 480px;
+background: rgba(255, 255, 255, 0.96);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+border-top: 1px solid var(–border);
+padding: 8px 8px max(8px, env(safe-area-inset-bottom));
+display: flex;
+justify-content: space-around;
+z-index: 100;
+}
+.bottomnav-item {
+flex: 1;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 3px;
+padding: 6px 4px;
+border-radius: 12px;
+cursor: pointer;
+color: var(–text-muted);
+transition: all 0.2s;
+font-size: 10px;
+font-weight: 600;
+background: none;
+border: none;
+font-family: inherit;
+}
+.bottomnav-item.active {
+color: var(–primary);
+}
+.bottomnav-item.active .nav-icon {
+background: var(–primary);
+color: var(–gold);
+transform: translateY(-2px);
+}
+.nav-icon {
+width: 32px;
+height: 32px;
+border-radius: 12px;
+background: transparent;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 16px;
+transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ========== PAGES ========== */
+.page {
+display: none;
+padding: 0 16px 24px;
+animation: fadeUp 0.4s ease;
+}
+.page.active { display: block; }
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(8px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== HEADER (Home) ========== */
+.hero {
+background: linear-gradient(135deg, var(–primary) 0%, var(–primary-light) 100%);
+border-radius: var(–radius-lg);
+padding: 22px 22px 26px;
+margin: 8px 0 20px;
+color: white;
+position: relative;
+overflow: hidden;
+}
+.hero::before {
+content: ‘’;
+position: absolute;
+top: -40px;
+left: -40px;
+width: 160px;
+height: 160px;
+background: radial-gradient(circle, rgba(201, 169, 97, 0.15) 0%, transparent 70%);
+border-radius: 50%;
+}
+.hero::after {
+content: ‘’;
+position: absolute;
+bottom: -60px;
+right: -60px;
+width: 200px;
+height: 200px;
+background: radial-gradient(circle, rgba(201, 169, 97, 0.08) 0%, transparent 70%);
+border-radius: 50%;
+}
+.hero-eyebrow {
+font-size: 11px;
+font-weight: 700;
+color: var(–gold-light);
+letter-spacing: 2px;
+margin-bottom: 8px;
+position: relative;
+z-index: 1;
+}
+.hero-title {
+font-size: 28px;
+font-weight: 900;
+line-height: 1.2;
+margin-bottom: 6px;
+position: relative;
+z-index: 1;
+}
+.hero-subtitle {
+font-size: 14px;
+color: rgba(255, 255, 255, 0.7);
+margin-bottom: 18px;
+position: relative;
+z-index: 1;
+}
+.hero-stats {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 10px;
+position: relative;
+z-index: 1;
+}
+.hero-stat {
+background: rgba(255, 255, 255, 0.08);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(201, 169, 97, 0.2);
+border-radius: 14px;
+padding: 12px 8px;
+text-align: center;
+}
+.hero-stat-value {
+font-size: 22px;
+font-weight: 900;
+color: var(–gold);
+line-height: 1;
+margin-bottom: 4px;
+}
+.hero-stat-label {
+font-size: 10px;
+color: rgba(255, 255, 255, 0.65);
+font-weight: 500;
+}
+
+/* ========== SECTION TITLE ========== */
+.section-title {
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin: 24px 4px 14px;
+}
+.section-title h3 {
+font-size: 17px;
+font-weight: 800;
+color: var(–primary);
+margin: 0;
+display: flex;
+align-items: center;
+gap: 8px;
+}
+.section-title-bar {
+width: 4px;
+height: 18px;
+background: var(–gold);
+border-radius: 4px;
+}
+.section-title .more {
+font-size: 12px;
+color: var(–text-muted);
+font-weight: 600;
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 3px;
+}
+
+/* ========== INSIGHT CARDS GRID ========== */
+.insight-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 10px;
+}
+.insight-card {
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: var(–radius);
+padding: 14px;
+cursor: pointer;
+transition: all 0.25s;
+position: relative;
+overflow: hidden;
+}
+.insight-card:active {
+transform: scale(0.97);
+background: var(–surface-2);
+}
+.insight-card .ic-icon {
+width: 36px;
+height: 36px;
+border-radius: 10px;
+background: var(–gold-soft);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 16px;
+color: var(–gold);
+margin-bottom: 10px;
+}
+.insight-card.alert .ic-icon { background: rgba(220, 68, 68, 0.1); color: var(–red); }
+.insight-card.success .ic-icon { background: rgba(14, 92, 74, 0.1); color: var(–emerald); }
+.insight-card .ic-value {
+font-size: 24px;
+font-weight: 900;
+color: var(–primary);
+line-height: 1.1;
+margin-bottom: 2px;
+}
+.insight-card .ic-label {
+font-size: 11px;
+color: var(–text-muted);
+font-weight: 600;
+margin-bottom: 4px;
+}
+.insight-card .ic-desc {
+font-size: 11px;
+color: var(–text-soft);
+line-height: 1.4;
+}
+
+/* ========== FEATURE CARDS ========== */
+.feature-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 12px;
+margin-top: 10px;
+}
+.feature-card {
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: var(–radius);
+padding: 16px;
+cursor: pointer;
+transition: all 0.25s;
+position: relative;
+overflow: hidden;
+text-align: right;
+}
+.feature-card:active { transform: scale(0.96); }
+.feature-card::before {
+content: ‘’;
+position: absolute;
+top: 0;
+right: 0;
+width: 40%;
+height: 100%;
+background: linear-gradient(225deg, rgba(201, 169, 97, 0.08) 0%, transparent 70%);
+}
+.feature-card .fc-icon {
+width: 40px;
+height: 40px;
+border-radius: 12px;
+background: linear-gradient(135deg, var(–primary) 0%, var(–primary-light) 100%);
+color: var(–gold);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 18px;
+margin-bottom: 12px;
+position: relative;
+}
+.feature-card .fc-title {
+font-size: 14px;
+font-weight: 800;
+color: var(–primary);
+margin-bottom: 4px;
+position: relative;
+}
+.feature-card .fc-sub {
+font-size: 11px;
+color: var(–text-muted);
+font-weight: 500;
+position: relative;
+}
+.feature-card .fc-arrow {
+position: absolute;
+top: 16px;
+left: 16px;
+color: var(–text-muted);
+font-size: 14px;
+}
+
+/* ========== STAT BAR (insight strip) ========== */
+.stat-strip {
+background: linear-gradient(135deg, var(–primary) 0%, var(–primary-light) 100%);
+border-radius: var(–radius);
+padding: 16px;
+margin: 16px 0;
+display: flex;
+align-items: center;
+gap: 12px;
+color: white;
+}
+.stat-strip-icon {
+width: 44px;
+height: 44px;
+border-radius: 12px;
+background: rgba(201, 169, 97, 0.2);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 20px;
+flex-shrink: 0;
+}
+.stat-strip-text {
+flex: 1;
+}
+.stat-strip-title {
+font-size: 12px;
+color: var(–gold);
+font-weight: 700;
+letter-spacing: 1px;
+margin-bottom: 2px;
+}
+.stat-strip-desc {
+font-size: 14px;
+font-weight: 600;
+line-height: 1.4;
+}
+
+/* ========== CHART CARD ========== */
+.chart-card {
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: var(–radius);
+padding: 18px 16px;
+margin-bottom: 14px;
+}
+.chart-card-header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-bottom: 14px;
+}
+.chart-card-title {
+font-size: 14px;
+font-weight: 800;
+color: var(–primary);
+}
+.chart-card-sub {
+font-size: 11px;
+color: var(–text-muted);
+margin-top: 2px;
+}
+.chart-tag {
+font-size: 10px;
+background: var(–gold-soft);
+color: var(–gold);
+padding: 4px 10px;
+border-radius: 8px;
+font-weight: 700;
+}
+
+/* ========== ANIMATED BAR CHART ========== */
+.bar-row {
+margin-bottom: 12px;
+}
+.bar-row:last-child { margin-bottom: 0; }
+.bar-row-header {
+display: flex;
+justify-content: space-between;
+align-items: baseline;
+margin-bottom: 6px;
+}
+.bar-row-label {
+font-size: 12px;
+color: var(–text);
+font-weight: 600;
+}
+.bar-row-value {
+font-size: 13px;
+color: var(–primary);
+font-weight: 800;
+}
+.bar-track {
+height: 10px;
+background: var(–surface-2);
+border-radius: 6px;
+overflow: hidden;
+position: relative;
+}
+.bar-fill {
+height: 100%;
+background: linear-gradient(90deg, var(–gold) 0%, var(–gold-light) 100%);
+border-radius: 6px;
+width: 0;
+transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.bar-fill.primary {
+background: linear-gradient(90deg, var(–primary) 0%, var(–primary-light) 100%);
+}
+.bar-fill.emerald {
+background: linear-gradient(90deg, var(–emerald) 0%, var(–emerald-light) 100%);
+}
+.bar-fill.alert {
+background: linear-gradient(90deg, var(–red) 0%, var(–orange) 100%);
+}
+
+/* ========== COLUMN CHART (vertical bars) ========== */
+.col-chart {
+display: flex;
+align-items: flex-end;
+gap: 6px;
+height: 200px;
+padding: 12px 4px 0;
+border-bottom: 1px solid var(–border);
+}
+.col-chart-col {
+flex: 1;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 6px;
+height: 100%;
+justify-content: flex-end;
+cursor: pointer;
+}
+.col-chart-bar {
+width: 100%;
+max-width: 36px;
+background: linear-gradient(0deg, var(–gold) 0%, var(–gold-light) 100%);
+border-radius: 6px 6px 0 0;
+transition: height 1.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s;
+height: 0;
+position: relative;
+min-height: 2px;
+}
+.col-chart-bar.primary { background: linear-gradient(0deg, var(–primary) 0%, var(–primary-light) 100%); }
+.col-chart-bar.alert { background: linear-gradient(0deg, var(–red) 0%, var(–orange) 100%); }
+.col-chart-value {
+font-size: 10px;
+font-weight: 800;
+color: var(–primary);
+position: absolute;
+top: -16px;
+left: 50%;
+transform: translateX(-50%);
+white-space: nowrap;
+opacity: 0;
+animation: fadeIn 0.5s 1s forwards;
+}
+.col-chart-labels {
+display: flex;
+gap: 6px;
+padding: 8px 4px 0;
+}
+.col-chart-label {
+flex: 1;
+font-size: 9px;
+color: var(–text-muted);
+text-align: center;
+line-height: 1.3;
+font-weight: 600;
+}
+@keyframes fadeIn { to { opacity: 1; } }
+
+/* ========== DONUT CHART ========== */
+.donut-wrap {
+display: flex;
+align-items: center;
+gap: 16px;
+}
+.donut {
+width: 130px;
+height: 130px;
+position: relative;
+flex-shrink: 0;
+}
+.donut svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.donut-center {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+text-align: center;
+}
+.donut-center-value {
+font-size: 22px;
+font-weight: 900;
+color: var(–primary);
+line-height: 1;
+}
+.donut-center-label {
+font-size: 10px;
+color: var(–text-muted);
+font-weight: 600;
+margin-top: 3px;
+}
+.donut-segment {
+fill: none;
+stroke-width: 18;
+transition: stroke-dasharray 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.donut-legend {
+flex: 1;
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+.donut-legend-item {
+display: flex;
+align-items: center;
+gap: 8px;
+font-size: 12px;
+}
+.donut-dot {
+width: 10px;
+height: 10px;
+border-radius: 3px;
+flex-shrink: 0;
+}
+.donut-legend-text {
+flex: 1;
+color: var(–text-soft);
+font-weight: 500;
+}
+.donut-legend-val {
+color: var(–primary);
+font-weight: 800;
+font-size: 13px;
+}
+
+/* ========== SEARCH/FILTER (companies page) ========== */
+.search-bar {
+position: relative;
+margin: 4px 0 12px;
+}
+.search-input {
+width: 100%;
+padding: 13px 44px 13px 16px;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 14px;
+font-size: 14px;
+color: var(–text);
+font-family: inherit;
+outline: none;
+transition: all 0.2s;
+}
+.search-input:focus {
+border-color: var(–gold);
+box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.15);
+}
+.search-input::placeholder { color: var(–text-muted); }
+.search-icon {
+position: absolute;
+right: 14px;
+top: 50%;
+transform: translateY(-50%);
+color: var(–text-muted);
+font-size: 16px;
+pointer-events: none;
+}
+
+.filter-chips {
+display: flex;
+gap: 8px;
+overflow-x: auto;
+padding: 2px 0 8px;
+margin: 0 -16px;
+padding-right: 16px;
+padding-left: 16px;
+scrollbar-width: none;
+}
+.filter-chips::-webkit-scrollbar { display: none; }
+.chip {
+flex-shrink: 0;
+padding: 7px 14px;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 20px;
+font-size: 12px;
+color: var(–text-soft);
+font-weight: 600;
+cursor: pointer;
+white-space: nowrap;
+transition: all 0.2s;
+font-family: inherit;
+}
+.chip.active {
+background: var(–primary);
+color: var(–gold);
+border-color: var(–primary);
+}
+.chip:active { transform: scale(0.95); }
+
+.sort-toggle {
+display: flex;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 12px;
+padding: 3px;
+margin-bottom: 12px;
+}
+.sort-btn {
+flex: 1;
+padding: 8px;
+background: transparent;
+border: none;
+border-radius: 9px;
+font-size: 12px;
+font-weight: 700;
+color: var(–text-muted);
+cursor: pointer;
+transition: all 0.2s;
+font-family: inherit;
+}
+.sort-btn.active {
+background: var(–primary);
+color: var(–gold);
+}
+
+/* ========== COMPANY CARD ========== */
+.company-list {
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+.company-card {
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: var(–radius);
+padding: 14px;
+cursor: pointer;
+transition: all 0.2s;
+display: flex;
+align-items: center;
+gap: 12px;
+}
+.company-card:active {
+transform: scale(0.98);
+background: var(–surface-2);
+}
+.company-rank {
+width: 36px;
+height: 36px;
+border-radius: 10px;
+background: var(–gold-soft);
+color: var(–gold);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 14px;
+font-weight: 800;
+flex-shrink: 0;
+}
+.company-rank.top-3 { background: var(–primary); color: var(–gold); }
+.company-info {
+flex: 1;
+min-width: 0;
+}
+.company-name {
+font-size: 13px;
+font-weight: 700;
+color: var(–primary);
+margin-bottom: 4px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+.company-meta {
+display: flex;
+gap: 8px;
+align-items: center;
+flex-wrap: wrap;
+}
+.meta-pill {
+font-size: 10px;
+color: var(–text-muted);
+font-weight: 600;
+display: flex;
+align-items: center;
+gap: 3px;
+}
+.meta-pill .dot {
+width: 4px; height: 4px; border-radius: 50%;
+background: var(–text-muted);
+}
+.company-count {
+text-align: left;
+flex-shrink: 0;
+}
+.company-count-num {
+font-size: 18px;
+font-weight: 900;
+color: var(–primary);
+line-height: 1;
+}
+.company-count-label {
+font-size: 10px;
+color: var(–text-muted);
+font-weight: 600;
+margin-top: 2px;
+}
+
+/* ========== COMPANY DETAIL MODAL ========== */
+.modal {
+position: fixed;
+inset: 0;
+z-index: 200;
+display: none;
+background: rgba(15, 27, 61, 0.5);
+backdrop-filter: blur(4px);
+-webkit-backdrop-filter: blur(4px);
+align-items: flex-end;
+justify-content: center;
+}
+.modal.active { display: flex; animation: fadeBg 0.25s ease; }
+@keyframes fadeBg { from { opacity: 0; } to { opacity: 1; } }
+.modal-sheet {
+background: var(–bg);
+width: 100%;
+max-width: 480px;
+max-height: 92vh;
+border-radius: 24px 24px 0 0;
+overflow-y: auto;
+animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+position: relative;
+}
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.modal-handle {
+width: 36px;
+height: 4px;
+background: var(–border);
+border-radius: 2px;
+margin: 10px auto 0;
+position: sticky;
+top: 10px;
+}
+.modal-header {
+padding: 18px 20px 14px;
+position: sticky;
+top: 0;
+background: var(–bg);
+z-index: 10;
+}
+.modal-header h2 {
+font-size: 18px;
+margin: 0 0 4px;
+color: var(–primary);
+font-weight: 800;
+}
+.modal-header .sub {
+font-size: 12px;
+color: var(–text-muted);
+}
+.modal-close {
+position: absolute;
+top: 14px;
+left: 16px;
+width: 34px;
+height: 34px;
+border-radius: 50%;
+background: var(–surface-2);
+border: none;
+color: var(–text);
+font-size: 20px;
+cursor: pointer;
+z-index: 20;
+line-height: 1;
+}
+.modal-body {
+padding: 4px 20px 32px;
+}
+.modal-stat-row {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+gap: 8px;
+margin-bottom: 16px;
+}
+.modal-stat {
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 12px;
+padding: 12px 8px;
+text-align: center;
+}
+.modal-stat-val {
+font-size: 18px;
+font-weight: 900;
+color: var(–primary);
+}
+.modal-stat-lbl {
+font-size: 10px;
+color: var(–text-muted);
+font-weight: 600;
+margin-top: 2px;
+}
+.detail-section {
+margin-bottom: 16px;
+}
+.detail-section h4 {
+font-size: 12px;
+font-weight: 800;
+color: var(–gold);
+letter-spacing: 1px;
+margin: 0 0 10px;
+}
+.detail-row {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 10px 12px;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 10px;
+margin-bottom: 6px;
+font-size: 13px;
+}
+.detail-row .label {
+color: var(–text-muted);
+font-weight: 600;
+}
+.detail-row .value {
+color: var(–primary);
+font-weight: 700;
+}
+.detail-row .value.tag {
+background: var(–gold-soft);
+color: var(–gold);
+padding: 3px 10px;
+border-radius: 8px;
+font-size: 11px;
+font-weight: 800;
+}
+.detail-row .value.tag.train { background: rgba(31, 45, 92, 0.1); color: var(–primary); }
+.detail-row .value.tag.taj { background: rgba(14, 92, 74, 0.1); color: var(–emerald); }
+.detail-row .value.tag.late { background: rgba(31, 45, 92, 0.1); color: var(–primary); }
+.detail-row .value.tag.unknown { background: var(–surface-2); color: var(–text-muted); }
+
+.timeline-item {
+display: flex;
+gap: 10px;
+padding: 10px 12px;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 10px;
+margin-bottom: 6px;
+}
+.timeline-time {
+font-size: 11px;
+color: var(–text-muted);
+font-weight: 600;
+flex: 1;
+}
+.timeline-count {
+font-size: 13px;
+color: var(–primary);
+font-weight: 800;
+}
+
+/* ========== COMPARE PAGE ========== */
+.compare-slot {
+background: var(–surface);
+border: 2px dashed var(–border);
+border-radius: var(–radius);
+padding: 16px;
+text-align: center;
+cursor: pointer;
+transition: all 0.2s;
+}
+.compare-slot:active { transform: scale(0.97); }
+.compare-slot.filled {
+border-style: solid;
+border-color: var(–gold);
+background: var(–surface);
+text-align: right;
+display: flex;
+align-items: center;
+gap: 12px;
+}
+.compare-slot .plus {
+font-size: 28px;
+color: var(–gold);
+font-weight: 300;
+margin-bottom: 4px;
+}
+.compare-slot .add-text {
+font-size: 12px;
+color: var(–text-muted);
+font-weight: 600;
+}
+.compare-row-result {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 10px;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 12px;
+padding: 12px;
+margin-bottom: 8px;
+}
+.compare-cell {
+text-align: center;
+}
+.compare-cell-val {
+font-size: 18px;
+font-weight: 900;
+color: var(–primary);
+}
+.compare-cell-lbl {
+font-size: 10px;
+color: var(–text-muted);
+font-weight: 600;
+margin-top: 2px;
+}
+.compare-divider {
+text-align: center;
+font-size: 11px;
+color: var(–gold);
+font-weight: 800;
+letter-spacing: 1px;
+padding: 4px 0;
+margin: 0 -12px 4px;
+}
+.compare-attr {
+font-size: 11px;
+color: var(–text-muted);
+font-weight: 700;
+text-align: center;
+background: var(–surface-2);
+padding: 6px;
+border-radius: 8px;
+margin: 0 -2px;
+}
+
+/* ========== HOTELS PAGE ========== */
+.area-tab-row {
+display: flex;
+gap: 8px;
+overflow-x: auto;
+padding: 4px 0 12px;
+margin: 0 -16px;
+padding-right: 16px;
+padding-left: 16px;
+scrollbar-width: none;
+}
+.area-tab-row::-webkit-scrollbar { display: none; }
+
+.hotel-card {
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: var(–radius);
+padding: 14px;
+margin-bottom: 10px;
+cursor: pointer;
+transition: all 0.2s;
+}
+.hotel-card:active { transform: scale(0.98); background: var(–surface-2); }
+.hotel-header {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+gap: 10px;
+margin-bottom: 10px;
+}
+.hotel-name {
+font-size: 14px;
+font-weight: 800;
+color: var(–primary);
+flex: 1;
+}
+.hotel-area-tag {
+font-size: 10px;
+color: var(–gold);
+background: var(–gold-soft);
+padding: 3px 8px;
+border-radius: 6px;
+font-weight: 700;
+white-space: nowrap;
+}
+.hotel-stats {
+display: flex;
+gap: 14px;
+border-top: 1px dashed var(–border);
+padding-top: 10px;
+}
+.hotel-stat-mini {
+flex: 1;
+}
+.hotel-stat-mini .v {
+font-size: 16px;
+font-weight: 900;
+color: var(–primary);
+}
+.hotel-stat-mini .l {
+font-size: 10px;
+color: var(–text-muted);
+font-weight: 600;
+}
+
+/* ========== INSIGHTS PAGE ========== */
+.insight-detail-card {
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: var(–radius);
+padding: 16px;
+margin-bottom: 12px;
+display: flex;
+gap: 12px;
+}
+.insight-detail-card.alert { border-color: rgba(220, 68, 68, 0.3); background: rgba(220, 68, 68, 0.04); }
+.insight-detail-card.warn { border-color: rgba(232, 146, 59, 0.3); background: rgba(232, 146, 59, 0.04); }
+.insight-detail-card.success { border-color: rgba(14, 92, 74, 0.3); background: rgba(14, 92, 74, 0.04); }
+.insight-detail-card.info { border-color: rgba(31, 45, 92, 0.2); background: rgba(31, 45, 92, 0.04); }
+.insight-detail-icon {
+width: 40px;
+height: 40px;
+border-radius: 12px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 20px;
+flex-shrink: 0;
+}
+.insight-detail-card.alert .insight-detail-icon { background: rgba(220, 68, 68, 0.15); color: var(–red); }
+.insight-detail-card.warn .insight-detail-icon { background: rgba(232, 146, 59, 0.15); color: var(–orange); }
+.insight-detail-card.success .insight-detail-icon { background: rgba(14, 92, 74, 0.15); color: var(–emerald); }
+.insight-detail-card.info .insight-detail-icon { background: rgba(31, 45, 92, 0.1); color: var(–primary); }
+
+.insight-detail-text { flex: 1; }
+.insight-detail-text h4 {
+font-size: 14px;
+font-weight: 800;
+margin: 0 0 4px;
+color: var(–primary);
+}
+.insight-detail-text p {
+font-size: 12px;
+color: var(–text-soft);
+line-height: 1.55;
+margin: 0;
+}
+
+/* ========== EMPTY STATE ========== */
+.empty {
+text-align: center;
+padding: 40px 20px;
+color: var(–text-muted);
+}
+.empty-icon {
+font-size: 36px;
+margin-bottom: 8px;
+}
+.empty-text {
+font-size: 13px;
+font-weight: 600;
+}
+
+/* ========== UTIL ========== */
+.spacer { height: 12px; }
+.list-pill {
+font-size: 11px;
+background: var(–surface-2);
+color: var(–text-soft);
+padding: 4px 8px;
+border-radius: 6px;
+font-weight: 600;
+}
+
+/* ========== HOTEL DETAIL chip ========== */
+.hotel-companies-list {
+display: flex;
+flex-direction: column;
+gap: 6px;
+margin-top: 4px;
+}
+.hotel-company-chip {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 10px 12px;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 10px;
+font-size: 12px;
+cursor: pointer;
+}
+.hotel-company-chip:active { background: var(–surface-2); }
+
+/* ========== TAB CONTENT for company detail ========== */
+.tab-row {
+display: flex;
+background: var(–surface-2);
+border-radius: 12px;
+padding: 3px;
+margin-bottom: 14px;
+}
+.tab-btn {
+flex: 1;
+padding: 8px;
+background: transparent;
+border: none;
+border-radius: 9px;
+font-size: 12px;
+font-weight: 700;
+color: var(–text-muted);
+cursor: pointer;
+transition: all 0.2s;
+font-family: inherit;
+}
+.tab-btn.active { background: white; color: var(–primary); box-shadow: var(–shadow-sm); }
+
+/* ========== Floating action button (Compare quick) ========== */
+.compare-actions {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 8px;
+margin-top: 16px;
+}
+.compare-action-btn {
+padding: 12px;
+background: var(–primary);
+color: var(–gold);
+border: none;
+border-radius: 12px;
+font-size: 12px;
+font-weight: 700;
+cursor: pointer;
+font-family: inherit;
+}
+.compare-action-btn.secondary {
+background: var(–surface);
+color: var(–text-soft);
+border: 1px solid var(–border);
+}
+.compare-action-btn:active { transform: scale(0.96); }
+
+</style>
+</head>
+<body>
+<div id="app">
+  <!-- TOP BAR (dynamic) -->
+  <div class="topbar transparent" id="topbar">
+    <div>
+      <div class="topbar-title" id="topbar-title">خطة التفويج</div>
+      <div class="topbar-sub">موسم 1447 هـ - 2026 م</div>
+    </div>
+    <button class="topbar-back" id="topbar-back" style="display:none">←</button>
+  </div>
+
+  <!-- ========== HOME PAGE ========== -->
+
+  <div class="page active" id="page-home">
+    <div class="hero">
+      <div class="hero-eyebrow">وزارة الأوقاف والشؤون الإسلامية</div>
+      <div class="hero-title">تحليل خطة التفويج</div>
+      <div class="hero-subtitle">بعثة الحج الكويتية - موسم 1447</div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-value" id="stat-pilgrims">0</div>
+          <div class="hero-stat-label">حاج</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value" id="stat-companies">0</div>
+          <div class="hero-stat-label">شركة</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value" id="stat-buses">0</div>
+          <div class="hero-stat-label">حافلة</div>
+        </div>
+      </div>
+    </div>
+
+```
+<div class="section-title">
+  <h3><span class="section-title-bar"></span> أبرز النتائج</h3>
+</div>
+<div class="insight-grid">
+  <div class="insight-card alert" onclick="goPage('insights')">
+    <div class="ic-icon">⚠</div>
+    <div class="ic-value">68٪</div>
+    <div class="ic-label">ذروة التصعيد</div>
+    <div class="ic-desc">5,457 حاج في 8 ساعات</div>
+  </div>
+  <div class="insight-card alert" onclick="goPage('insights')">
+    <div class="ic-icon">🕋</div>
+    <div class="ic-value">65٪</div>
+    <div class="ic-label">ذروة الإفاضة</div>
+    <div class="ic-desc">5,227 حاج فجر النحر</div>
+  </div>
+  <div class="insight-card" onclick="goPage('companies')">
+    <div class="ic-icon">🏢</div>
+    <div class="ic-value">14</div>
+    <div class="ic-label">شركة كبيرة</div>
+    <div class="ic-desc">200+ حاج لكل شركة</div>
+  </div>
+  <div class="insight-card success" onclick="goPage('companies')">
+    <div class="ic-icon">⭐</div>
+    <div class="ic-value">675</div>
+    <div class="ic-label">أكبر شركة</div>
+    <div class="ic-desc">د. وليد الكندري</div>
+  </div>
+</div>
+
+<div class="section-title">
+  <h3><span class="section-title-bar"></span> اكتشف</h3>
+</div>
+<div class="feature-grid">
+  <div class="feature-card" onclick="goPage('companies')">
+    <div class="fc-arrow">←</div>
+    <div class="fc-icon">📋</div>
+    <div class="fc-title">الشركات</div>
+    <div class="fc-sub">بحث وفلترة 64 شركة</div>
+  </div>
+  <div class="feature-card" onclick="goPage('hotels')">
+    <div class="fc-arrow">←</div>
+    <div class="fc-icon">🏨</div>
+    <div class="fc-title">السكن</div>
+    <div class="fc-sub">39 فندق و 11 منطقة</div>
+  </div>
+  <div class="feature-card" onclick="goPage('charts')">
+    <div class="fc-arrow">←</div>
+    <div class="fc-icon">📊</div>
+    <div class="fc-title">الإحصائيات</div>
+    <div class="fc-sub">رسوم بيانية تفاعلية</div>
+  </div>
+  <div class="feature-card" onclick="goPage('compare')">
+    <div class="fc-arrow">←</div>
+    <div class="fc-icon">⚖️</div>
+    <div class="fc-title">المقارنة</div>
+    <div class="fc-sub">قارن بين الشركات</div>
+  </div>
+</div>
+
+<div class="section-title">
+  <h3><span class="section-title-bar"></span> الذروة الحرجة</h3>
+</div>
+<div class="chart-card">
+  <div class="chart-card-header">
+    <div>
+      <div class="chart-card-title">التصعيد إلى عرفات</div>
+      <div class="chart-card-sub">حسب النافذة الزمنية</div>
+    </div>
+    <span class="chart-tag">7-9 ذو الحجة</span>
+  </div>
+  <div id="home-peak-chart"></div>
+</div>
+
+<div class="stat-strip">
+  <div class="stat-strip-icon">💡</div>
+  <div class="stat-strip-text">
+    <div class="stat-strip-title">ملاحظة محورية</div>
+    <div class="stat-strip-desc">أكبر 10 شركات تدير 34٪ من الحجاج</div>
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- ========== COMPANIES PAGE ========== -->
+
+  <div class="page" id="page-companies">
+    <div class="search-bar">
+      <input type="text" class="search-input" id="search-input" placeholder="ابحث باسم الشركة أو الفندق...">
+      <span class="search-icon">🔍</span>
+    </div>
+
+```
+<div class="filter-chips" id="filter-chips">
+  <button class="chip active" data-filter="all">الكل</button>
+  <button class="chip" data-filter="large">كبيرة (200+)</button>
+  <button class="chip" data-filter="medium">متوسطة</button>
+  <button class="chip" data-filter="small">صغيرة</button>
+  <button class="chip" data-filter="taajul">متعجل</button>
+  <button class="chip" data-filter="taakhur">متأخر</button>
+  <button class="chip" data-filter="train">يستخدم القطار</button>
+</div>
+
+<div class="sort-toggle" id="sort-toggle">
+  <button class="sort-btn active" data-sort="size">الحجم</button>
+  <button class="sort-btn" data-sort="alpha">أبجدي</button>
+  <button class="sort-btn" data-sort="buses">الحافلات</button>
+</div>
+
+<div id="results-count" style="font-size:11px;color:var(--text-muted);margin-bottom:10px;font-weight:600"></div>
+
+<div class="company-list" id="company-list"></div>
+```
+
+  </div>
+
+  <!-- ========== HOTELS PAGE ========== -->
+
+  <div class="page" id="page-hotels">
+    <div class="section-title">
+      <h3><span class="section-title-bar"></span> توزيع الحجاج حسب المنطقة</h3>
+    </div>
+    <div class="chart-card" id="area-chart-card"></div>
+
+```
+<div class="section-title">
+  <h3><span class="section-title-bar"></span> الفنادق والسكن</h3>
+</div>
+<div class="area-tab-row" id="area-tabs"></div>
+<div id="hotel-list"></div>
+```
+
+  </div>
+
+  <!-- ========== CHARTS PAGE ========== -->
+
+  <div class="page" id="page-charts">
+    <div class="section-title">
+      <h3><span class="section-title-bar"></span> أحجام الشركات</h3>
+    </div>
+    <div class="chart-card" id="size-chart"></div>
+
+```
+<div class="section-title">
+  <h3><span class="section-title-bar"></span> التعجل والتأخر</h3>
+</div>
+<div class="chart-card" id="tajeel-chart"></div>
+
+<div class="section-title">
+  <h3><span class="section-title-bar"></span> وسائل النقل</h3>
+</div>
+<div class="chart-card" id="transport-chart"></div>
+
+<div class="section-title">
+  <h3><span class="section-title-bar"></span> طواف الإفاضة</h3>
+</div>
+<div class="chart-card" id="ifadah-chart"></div>
+
+<div class="section-title">
+  <h3><span class="section-title-bar"></span> ذروة التصعيد إلى عرفات</h3>
+</div>
+<div class="chart-card" id="ascent-chart"></div>
+```
+
+  </div>
+
+  <!-- ========== COMPARE PAGE ========== -->
+
+  <div class="page" id="page-compare">
+    <div class="section-title">
+      <h3><span class="section-title-bar"></span> قارن بين شركتين</h3>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+      <div class="compare-slot" id="slot-a" onclick="openCompanyPicker('a')">
+        <div class="plus">+</div>
+        <div class="add-text">اختر الشركة الأولى</div>
+      </div>
+      <div class="compare-slot" id="slot-b" onclick="openCompanyPicker('b')">
+        <div class="plus">+</div>
+        <div class="add-text">اختر الشركة الثانية</div>
+      </div>
+    </div>
+    <div id="compare-results"></div>
+  </div>
+
+  <!-- ========== INSIGHTS PAGE ========== -->
+
+  <div class="page" id="page-insights">
+    <div class="section-title">
+      <h3><span class="section-title-bar"></span> النقاط الحرجة</h3>
+    </div>
+    <div class="insight-detail-card alert">
+      <div class="insight-detail-icon">⚠</div>
+      <div class="insight-detail-text">
+        <h4>ذروة التصعيد - 68٪ في 8 ساعات</h4>
+        <p>5,457 حاج يصعدون إلى عرفات في نافذة (00:00-08:00) ليلة 9 ذي الحجة. ضغط مرتفع على الطرق ووسائل النقل في وقت واحد.</p>
+      </div>
+    </div>
+    <div class="insight-detail-card warn">
+      <div class="insight-detail-icon">🕋</div>
+      <div class="insight-detail-text">
+        <h4>ذروة طواف الإفاضة</h4>
+        <p>5,227 حاج (65٪) في نافذة 6 ساعات فجر يوم النحر — أعلى ضغط متوقع على المطاف يستوجب جدولة دقيقة.</p>
+      </div>
+    </div>
+
+```
+<div class="section-title">
+  <h3><span class="section-title-bar"></span> ملاحظات على البيانات</h3>
+</div>
+<div class="insight-detail-card warn">
+  <div class="insight-detail-icon">📝</div>
+  <div class="insight-detail-text">
+    <h4>تباين في تنسيق الأوقات</h4>
+    <p>بعض الشركات تكتب الأوقات بصيغة عشرية (0.625) وأخرى نصية ("عصراً") وأخرى رقمية — يصعّب المعالجة الآلية.</p>
+  </div>
+</div>
+<div class="insight-detail-card info">
+  <div class="insight-detail-icon">📋</div>
+  <div class="insight-detail-text">
+    <h4>حقول ناقصة</h4>
+    <p>7 شركات (10٪) لم تحدد التعجل/التأخر — تحتاج متابعة قبل الاعتماد. بعض الحقول مكتوبة "لا يوجد".</p>
+  </div>
+</div>
+<div class="insight-detail-card info">
+  <div class="insight-detail-icon">👥</div>
+  <div class="insight-detail-text">
+    <h4>تعدد الشركات لضابط واحد</h4>
+    <p>ضابط اتصال واحد مسؤول عن 5 شركات (1,096 حاج) — يستوجب التأكد من قدرته على إدارة الحجم.</p>
+  </div>
+</div>
+
+<div class="section-title">
+  <h3><span class="section-title-bar"></span> نقاط القوة</h3>
+</div>
+<div class="insight-detail-card success">
+  <div class="insight-detail-icon">✓</div>
+  <div class="insight-detail-text">
+    <h4>توازن جيد في توزيع المسار</h4>
+    <p>35 شركة تستخدم نافذة زمنية واحدة فقط (تنظيم بسيط)، و 24 شركة تستخدم نافذتين لتوزيع الضغط.</p>
+  </div>
+</div>
+<div class="insight-detail-card success">
+  <div class="insight-detail-icon">🚌</div>
+  <div class="insight-detail-text">
+    <h4>كفاءة استخدام الحافلات</h4>
+    <p>متوسط 39 حاج لكل حافلة، مع أعلى استثمار في حي النسيم (41/حافلة) - استخدام جيد للأسطول.</p>
+  </div>
+</div>
+
+<div class="section-title">
+  <h3><span class="section-title-bar"></span> توصيات للتطوير</h3>
+</div>
+<div class="insight-detail-card info">
+  <div class="insight-detail-icon">🔧</div>
+  <div class="insight-detail-text">
+    <h4>توحيد قوالب الإدخال</h4>
+    <p>نموذج إلكتروني موحّد بقوائم منسدلة للأوقات والوسائل بدلاً من النص الحر — يضمن البيانات النظيفة.</p>
+  </div>
+</div>
+<div class="insight-detail-card info">
+  <div class="insight-detail-icon">🤝</div>
+  <div class="insight-detail-text">
+    <h4>تنسيق التفويج المشترك</h4>
+    <p>للفنادق التي تستضيف 3+ شركات: جدولة موحّدة لمنع التضارب على الباصات والمصاعد والمداخل.</p>
+  </div>
+</div>
+<div class="insight-detail-card info">
+  <div class="insight-detail-icon">⏱</div>
+  <div class="insight-detail-text">
+    <h4>إعادة توزيع الذروة</h4>
+    <p>تحفيز الشركات الكبيرة على توزيع حجاجها على نافذتين بدلاً من نافذة واحدة - يخفّف الضغط.</p>
+  </div>
+</div>
+<div class="insight-detail-card info">
+  <div class="insight-detail-icon">📊</div>
+  <div class="insight-detail-text">
+    <h4>لوحة متابعة مباشرة</h4>
+    <p>Dashboard للوزارة يعرض حالة كل شركة في كل مرحلة بشكل لحظي خلال أيام الحج — تدخّل سريع عند الحاجة.</p>
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- ========== BOTTOM NAV ========== -->
+
+  <div class="bottomnav">
+    <button class="bottomnav-item active" data-page="home">
+      <div class="nav-icon">🏠</div>
+      <span>الرئيسية</span>
+    </button>
+    <button class="bottomnav-item" data-page="companies">
+      <div class="nav-icon">📋</div>
+      <span>الشركات</span>
+    </button>
+    <button class="bottomnav-item" data-page="charts">
+      <div class="nav-icon">📊</div>
+      <span>إحصائيات</span>
+    </button>
+    <button class="bottomnav-item" data-page="hotels">
+      <div class="nav-icon">🏨</div>
+      <span>السكن</span>
+    </button>
+    <button class="bottomnav-item" data-page="insights">
+      <div class="nav-icon">💡</div>
+      <span>التحليل</span>
+    </button>
+  </div>
+
+  <!-- ========== MODAL (company detail / hotel detail / company picker) ========== -->
+
+  <div class="modal" id="modal">
+    <div class="modal-sheet">
+      <div class="modal-handle"></div>
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// =========================================================
+// DATA
+// =========================================================
+const DATA = {"totalPilgrims":8000,"totalCompanies":64,"totalBuses":204,"companies":[{"id":1,"name":"الدكتور وليد محمد الكندري","fullName":"شركه الدكتور وليد محمد الكندري لتنظيم رحلات الحج","total":675,"buses":15,"ppb":45.0,"hotel":"فندق دفلي","area":"أخرى","phone":"","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متأخر","timeSlots":[{"label":"8 ذو الحجة 05-10","count":675,"col":"T8_0500_1000"},{"label":"9 ذو الحجة 00-08","count":675,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 06-12","count":675},{"label":"11 ذو الحجة 06-12","count":675}]},{"id":2,"name":"مجموعه الكندري","fullName":"شركه مجموعه الكندري لتنظيم رحلات الحج","total":272,"buses":7,"ppb":38.9,"hotel":"فندق كوبثرون - النسم","area":"حي النسيم","phone":"55842233","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 00-05","count":70,"col":"T8_0000_0500"},{"label":"8 ذو الحجة 05-10","count":102,"col":"T8_0500_1000"},{"label":"9 ذو الحجة 00-08","count":100,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":272}]},{"id":3,"name":"حملة خالد الفحماء","fullName":"شركة حملة خالد الفحماء لتنظيم رحلات الحج","total":225,"buses":5,"ppb":45.0,"hotel":"فندق ميزاب النخبة - مكة المكرمة - حي بطحاء قريش","area":"بطحاء قريش","phone":"99899476","arafatIn":"قطار","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 05-10","count":225,"col":"T8_0500_1000"},{"label":"9 ذو الحجة 00-08","count":225,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":225},{"label":"10 ذو الحجة 18-24","count":225}]},{"id":4,"name":"حملة محمد عودة الجلاسي","fullName":"شركة حملة محمد عودة الجلاسي لتنظيم رحلات الحج","total":225,"buses":5,"ppb":45.0,"hotel":"فندق ميركيور - العزيزية الجنوبية","area":"حي العزيزية","phone":"99896761","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 05-10","count":225,"col":"T8_0500_1000"},{"label":"9 ذو الحجة 00-08","count":225,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":225}]},{"id":5,"name":"فالح الجلاسي","fullName":"شركة فالح الجلاسي لتنظيم رحلات الحج","total":225,"buses":5,"ppb":45.0,"hotel":"فندق ميركيور - العزيزية الجنوبية","area":"حي العزيزية","phone":"99896761","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 05-10","count":225,"col":"T8_0500_1000"},{"label":"9 ذو الحجة 00-08","count":225,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":225}]},{"id":6,"name":"يوسف حسن الكندري","fullName":"شركه يوسف حسن الكندري لتنظيم رحلات الحج","total":225,"buses":9,"ppb":25.0,"hotel":"فندق روتانا جبل عمر","area":"جبل عمر","phone":"99605875","arafatIn":"قطار","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 00-05","count":61,"col":"T8_0000_0500"},{"label":"8 ذو الحجة 05-10","count":56,"col":"T8_0500_1000"},{"label":"9 ذو الحجة 00-08","count":107,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":225}]},{"id":7,"name":"البراك","fullName":"شركه البراك لتنظيم رحلات الحج","total":224,"buses":5,"ppb":44.8,"hotel":"بارك ان -رديسون- النسيم","area":"حي النسيم","phone":"99994492","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متأخر","timeSlots":[{"label":"8 ذو الحجة 05-10","count":223,"col":"T8_0500_1000"},{"label":"9 ذو الحجة 00-08","count":223,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":223}]},{"id":8,"name":"الجلاسي","fullName":"شركة الجلاسي لتنظيم رحلات الحج","total":223,"buses":5,"ppb":44.6,"hotel":"فندق الجود - بطحاء قريش","area":"بطحاء قريش","phone":"009659797444","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 05-10","count":223,"col":"T8_0500_1000"},{"label":"9 ذو الحجة 00-08","count":223,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":223}]},{"id":9,"name":"العفاسي","fullName":"شركة العفاسي لتنظيم رحلات الحج","total":222,"buses":4,"ppb":55.5,"hotel":"فندق ربا تايم - شاع الحج","area":"شارع الحج / وادي جليل","phone":"0502258978","arafatIn":"حافلات","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 00-05","count":222,"col":"T8_0000_0500"}],"ifadahSlots":[{"label":"9 ذو الحجة 21-24","count":222},{"label":"10 ذو الحجة 00-06","count":222}]},{"id":10,"name":"البراك النخبه","fullName":"شركة البراك النخبه لتنظيم رحلات الحج","total":218,"buses":5,"ppb":43.6,"hotel":"بارك ان -رديسون- النسيم","area":"حي النسيم","phone":"99994492","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متأخر","timeSlots":[{"label":"8 ذو الحجة 05-10","count":218,"col":"T8_0500_1000"},{"label":"9 ذو الحجة 00-08","count":218,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":218}]},{"id":11,"name":"البراك الماسي","fullName":"شركة البراك الماسي لتنظيم رحلات الحج","total":217,"buses":4,"ppb":54.2,"hotel":"بارك ان -رديسون- النسيم","area":"حي النسيم","phone":"99994492","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متأخر","timeSlots":[{"label":"8 ذو الحجة 05-10","count":217,"col":"T8_0500_1000"},{"label":"9 ذو الحجة 00-08","count":217,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":217}]},{"id":12,"name":"عبدالله البراك","fullName":"شركة عبدالله البراك لتنظيم رحلات الحج","total":216,"buses":4,"ppb":54.0,"hotel":"جايدن مسار - حي  الرصيفة","area":"الرصيفة","phone":"99994492","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متأخر","timeSlots":[{"label":"8 ذو الحجة 05-10","count":216,"col":"T8_0500_1000"},{"label":"9 ذو الحجة 00-08","count":216,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":216}]},{"id":13,"name":"الصعفاق","fullName":"شركة الصعفاق لتنظيم رحلات الحج","total":210,"buses":5,"ppb":42.0,"hotel":"ميتل بطحاء قريش","area":"بطحاء قريش","phone":"009656700242","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 05-10","count":210,"col":"T8_0500_1000"},{"label":"9 ذو الحجة 00-08","count":210,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":210}]},{"id":14,"name":"الوسام","fullName":"شركه الوسام لتنظيم رحلات الحج","total":199,"buses":5,"ppb":39.8,"hotel":"فندق تايم ربا - حى وادى جليل - شارع الحج","area":"شارع الحج / وادي جليل","phone":"0559768833","arafatIn":"حافلات","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 05-10","count":199,"col":"T8_0500_1000"},{"label":"9 ذو الحجة 00-08","count":199,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":199}]},{"id":15,"name":"عبد السلام خليفة الشايجي","fullName":"شركة عبد السلام خليفة الشايجي لتنظيم رحلات  الحج","total":172,"buses":4,"ppb":43.0,"hotel":"فندق ميركيور - العزيزية الجنوبية","area":"حي العزيزية","phone":"99896761","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 05-10","count":172,"col":"T8_0500_1000"},{"label":"9 ذو الحجة 00-08","count":172,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":172}]},{"id":16,"name":"خالد المنصور","fullName":"شركه خالد المنصور لتنظيم رحلات الحج","total":155,"buses":6,"ppb":25.8,"hotel":"فندق دفلي","area":"أخرى","phone":"","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متأخر","timeSlots":[{"label":"8 ذو الحجة 00-05","count":155,"col":"T8_0000_0500"},{"label":"8 ذو الحجة 16-24","count":155,"col":"D8_1600_0000"}],"ifadahSlots":[{"label":"10 ذو الحجة 06-12","count":155},{"label":"11 ذو الحجة 06-12","count":155}]},{"id":17,"name":"داود الكندري","fullName":"شركة داود الكندري لتنظيم رحلات الحج","total":143,"buses":4,"ppb":35.8,"hotel":"فندق الفور بوينت","area":"أخرى","phone":"0550464632","arafatIn":"قطار","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"قطار","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 05-10","count":143,"col":"T8_0500_1000"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":143}]},{"id":18,"name":"الطواف","fullName":"شركة الطواف لتنظيم رحلات للحج","total":142,"buses":3,"ppb":47.3,"hotel":"جايدن مسار - حي  الرصيفة","area":"الرصيفة","phone":"99994492","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متأخر","timeSlots":[{"label":"8 ذو الحجة 05-10","count":142,"col":"T8_0500_1000"},{"label":"9 ذو الحجة 00-08","count":142,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":142}]},{"id":19,"name":"فهد فالح المطيري","fullName":"شركة فهد فالح المطيري لتنظيم رحلات الحج","total":126,"buses":3,"ppb":42.0,"hotel":"فندق التامور","area":"أخرى","phone":"","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"مختلط","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 05-10","count":126,"col":"T8_0500_1000"},{"label":"9 ذو الحجة 00-08","count":126,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":126}]},{"id":20,"name":"مجموعة صفا","fullName":"شركة مجموعة صفا لتنظيم رحلات الحج","total":124,"buses":3,"ppb":41.3,"hotel":"فندق كوبثرون - النسم","area":"حي النسيم","phone":"97111229","arafatIn":"قطار","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 00-05","count":54,"col":"T8_0000_0500"},{"label":"8 ذو الحجة 05-10","count":54,"col":"T8_0500_1000"},{"label":"9 ذو الحجة 00-08","count":16,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":48},{"label":"10 ذو الحجة 06-12","count":76}]},{"id":21,"name":"مجموعه النخبه","fullName":"شركه مجموعه النخبه لتنظيم رحلات الحج","total":120,"buses":3,"ppb":40.0,"hotel":"فندق كوبثرون - النسم","area":"حي النسيم","phone":"999089089","arafatIn":"حافلات","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 00-05","count":54,"col":"T8_0000_0500"},{"label":"8 ذو الحجة 05-10","count":54,"col":"T8_0500_1000"},{"label":"9 ذو الحجة 00-08","count":12,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":120}]},{"id":22,"name":"الابريسم","fullName":"شركة الابريسم لتنظيم رحلات الحج","total":108,"buses":3,"ppb":36.0,"hotel":"فندق كوبثرون - النسم","area":"حي النسيم","phone":"99669758","arafatIn":"حافلات","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 05-10","count":108,"col":"T8_0500_1000"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":68},{"label":"10 ذو الحجة 06-12","count":40}]},{"id":23,"name":"الفردوس","fullName":"شركة الفردوس لتنظيم رحلات الحج","total":113,"buses":3,"ppb":37.7,"hotel":"فندق كوبثرون - النسم","area":"حي النسيم","phone":"65777888","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 05-10","count":113,"col":"T8_0500_1000"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":73},{"label":"10 ذو الحجة 06-12","count":40}]},{"id":24,"name":"الهدى","fullName":"شركة الهدى لتنظيم رحلات الحج","total":112,"buses":3,"ppb":37.3,"hotel":"فندق توران - العاصمة المقدسة حي العزيزية شارع الجامعة","area":"حي العزيزية","phone":"0502258978","arafatIn":"حافلات","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 00-05","count":112,"col":"T8_0000_0500"}],"ifadahSlots":[{"label":"9 ذو الحجة 21-24","count":112},{"label":"10 ذو الحجة 00-06","count":112}]},{"id":25,"name":"احمد الضويحي","fullName":"شركة احمد الضويحي لتنظيم رحلات الحج","total":105,"buses":3,"ppb":35.0,"hotel":"بودل أجياد مكة","area":"أجياد","phone":"0553442241","arafatIn":"قطار","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"قطار","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 05-10","count":105,"col":"T8_0500_1000"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":105}]},{"id":26,"name":"التوحيد","fullName":"شركة التوحيد لتنظيم رحلات الحج","total":102,"buses":3,"ppb":34.0,"hotel":"فندق توران - العاصمة المقدسة حي العزيزية شارع الجامعة","area":"حي العزيزية","phone":"0502258978","arafatIn":"حافلات","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 00-05","count":102,"col":"T8_0000_0500"}],"ifadahSlots":[{"label":"9 ذو الحجة 21-24","count":102},{"label":"10 ذو الحجة 00-06","count":102}]},{"id":27,"name":"الغربين الماسيه","fullName":"شركة الغربين الماسيه لتنظيم رحلات الحج","total":96,"buses":2,"ppb":48.0,"hotel":"فندق التامور العزيزية الجنوبية","area":"حي العزيزية","phone":"0563425380","arafatIn":"قطار","arafatOut":"أخرى","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"7 ذو الحجة 20-24","count":96,"col":"T7_2000_2359"},{"label":"8 ذو الحجة 05-10","count":96,"col":"T8_0500_1000"},{"label":"8 ذو الحجة 08-16","count":96,"col":"D8_0800_1600"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":96},{"label":"11 ذو الحجة 06-12","count":96}]},{"id":28,"name":"نبيل الياسين","fullName":"شركة نبيل الياسين لتنظيم رحلات للحج","total":91,"buses":2,"ppb":45.5,"hotel":"بودل أجياد مكة","area":"أجياد","phone":"0553442241","arafatIn":"قطار","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"قطار","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 05-10","count":91,"col":"T8_0500_1000"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":91}]},{"id":29,"name":"مندكار","fullName":"شركه مندكار لتنظيم رحلات الحج","total":84,"buses":2,"ppb":42.0,"hotel":"ماريوت جبل عمر","area":"جبل عمر","phone":"67766788","arafatIn":"حافلات","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"9 ذو الحجة 00-08","count":50,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 18-24","count":50}]},{"id":30,"name":"الطبطبائي","fullName":"شركه الطبطبائي لتنظيم رحلات الحج","total":70,"buses":2,"ppb":35.0,"hotel":"فندق ملتزم البيت-النسيم","area":"حي النسيم","phone":"99121624","arafatIn":"قطار","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 16-24","count":70,"col":"D8_1600_0000"}],"ifadahSlots":[{"label":"9 ذو الحجة 21-24","count":70}]},{"id":31,"name":"سعد عودة الجلاسي","fullName":"شركة سعد عودة الجلاسي لتنظيم رحلات الحج","total":68,"buses":2,"ppb":34.0,"hotel":"ماريوت جبل عمر","area":"جبل عمر","phone":"0500747050","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 16-24","count":68,"col":"D8_1600_0000"}],"ifadahSlots":[{"label":"9 ذو الحجة 21-24","count":68},{"label":"10 ذو الحجة 00-06","count":68}]},{"id":32,"name":"مواسم","fullName":"شركة مواسم لتنظيم رحلات الحج","total":67,"buses":1,"ppb":67.0,"hotel":"فندق ملتزم البيت-النسيم","area":"حي النسيم","phone":"99121624","arafatIn":"قطار","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 16-24","count":67,"col":"D8_1600_0000"}],"ifadahSlots":[{"label":"9 ذو الحجة 21-24","count":67}]},{"id":33,"name":"عبدالرحمن المنشد","fullName":"شركة عبدالرحمن المنشد لتنظيم رحلات الحج","total":58,"buses":2,"ppb":29.0,"hotel":"كورت يارد ماريوت","area":"أخرى","phone":"0530499664","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 05-10","count":58,"col":"T8_0500_1000"},{"label":"9 ذو الحجة 00-08","count":58,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":58}]},{"id":34,"name":"المقام","fullName":"شركة المقام لتنظيم رحلات الحج","total":52,"buses":2,"ppb":26.0,"hotel":"فندق التامور","area":"أخرى","phone":"99119441","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"مختلط","tajeel":"متعجل","timeSlots":[{"label":"9 ذو الحجة 00-08","count":52,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":52}]},{"id":35,"name":"خالد الدواس","fullName":"شركة خالد الدواس لتنظيم رحلات الحج","total":52,"buses":1,"ppb":52.0,"hotel":"ملتزم الضيافة","area":"أخرى","phone":"99999577","arafatIn":"حافلات","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"قطار","tajeel":"متعجل","timeSlots":[{"label":"9 ذو الحجة 00-08","count":52,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 18-24","count":52}]},{"id":36,"name":"مجموعة الشايجي","fullName":"شركة مجموعة الشايجي لتنظيم رحلات الحج","total":50,"buses":1,"ppb":50.0,"hotel":"فندق فوربوينت - النسم","area":"حي النسيم","phone":"99898616","arafatIn":"قطار","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"9 ذو الحجة 00-08","count":50,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":50}]},{"id":37,"name":"حمد الدوسري","fullName":"شركة حمد الدوسري لتنظيم رحلات الحج","total":50,"buses":1,"ppb":50.0,"hotel":"فندق فوربوينت - النسم","area":"حي النسيم","phone":"66562737","arafatIn":"قطار","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 05-10","count":50,"col":"T8_0500_1000"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":50}]},{"id":38,"name":"عمر الدويسان","fullName":"شركة عمر الدويسان لتنظيم رحلات الحج","total":50,"buses":1,"ppb":50.0,"hotel":"الجود ريزيدنس- النسيم","area":"حي النسيم","phone":"66686848","arafatIn":"حافلات","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"قطار","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 08-16","count":50,"col":"D8_0800_1600"},{"label":"9 ذو الحجة 00-08","count":50,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":50}]},{"id":39,"name":"فايز عوض الفحماء","fullName":"شركة فايز عوض الفحماء لتنظيم رحلات الحج","total":50,"buses":2,"ppb":25.0,"hotel":"فندق ميزاب النخبة - مكة المكرمة - حي بطحاء قريش","area":"بطحاء قريش","phone":"97296200","arafatIn":"قطار","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 05-10","count":50,"col":"T8_0500_1000"},{"label":"8 ذو الحجة 16-24","count":50,"col":"D8_1600_0000"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":50},{"label":"10 ذو الحجة 18-24","count":50}]},{"id":40,"name":"مشاعر","fullName":"شركه مشاعر لتنظيم رحلات الحج","total":51,"buses":1,"ppb":51.0,"hotel":"فندق فوربوينت - النسم","area":"حي النسيم","phone":"51111870","arafatIn":"قطار","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"9 ذو الحجة 00-08","count":51,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":51}]},{"id":41,"name":"الردهان لخدمات","fullName":"شركة الردهان لخدمات لتنظيم رحلات الحج","total":50,"buses":2,"ppb":25.0,"hotel":"فندق الماريوت","area":"أخرى","phone":"006959907772","arafatIn":"حافلات","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 16-24","count":50,"col":"D8_1600_0000"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":50}]},{"id":42,"name":"عبدالمحسن يوسف العبدالمحسن","fullName":"شركه عبدالمحسن يوسف العبدالمحسن لتنظيم رحلات الحج","total":50,"buses":2,"ppb":25.0,"hotel":"ابراج المريديان مكة","area":"المريديان","phone":"99443398","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"مختلط","tajeel":"متعجل","timeSlots":[{"label":"9 ذو الحجة 00-08","count":50,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":50}]},{"id":43,"name":"البدر السعدون","fullName":"شركة البدر السعدون لتنظيم رحلات الحج","total":50,"buses":2,"ppb":25.0,"hotel":"فندق تايم ربا ــــ شارع الحج","area":"شارع الحج / وادي جليل","phone":"55655978","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"9 ذو الحجة 00-08","count":50,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"9 ذو الحجة 21-24","count":50}]},{"id":44,"name":"أركان","fullName":"شركه أركان لتنظيم رحلات الحج","total":50,"buses":1,"ppb":50.0,"hotel":"فندق ديار الخالدية - شارع إبراهيم الخليل - حي جرهم","area":"جرهم","phone":"0556347214","arafatIn":"قطار","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"قطار","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 00-05","count":50,"col":"T8_0000_0500"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":50},{"label":"11 ذو الحجة 00-06","count":50}]},{"id":45,"name":"السعيد","fullName":"شركة السعيد لتنظيم رحلات الحج","total":50,"buses":1,"ppb":50.0,"hotel":"فندق الجود - بطحاء قريش","area":"بطحاء قريش","phone":"009659797444","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 05-10","count":50,"col":"T8_0500_1000"},{"label":"9 ذو الحجة 00-08","count":50,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":50}]},{"id":46,"name":"احمد السبيعي","fullName":"شركة احمد السبيعي لتنظيم رحلات الحج","total":50,"buses":2,"ppb":25.0,"hotel":"فندق إم ملينيوم مكة - شارع إبراهيم الخليل","area":"أخرى","phone":"","arafatIn":"حافلات","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"قطار","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 05-10","count":50,"col":"T8_0500_1000"},{"label":"9 ذو الحجة 00-08","count":50,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":50},{"label":"11 ذو الحجة 00-06","count":50}]},{"id":47,"name":"العساكر","fullName":"شركة العساكر لتنظيم رحلات الحج","total":50,"buses":1,"ppb":50.0,"hotel":"فندق فوربوينت - النسم","area":"حي النسيم","phone":"98896666","arafatIn":"قطار","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 05-10","count":50,"col":"T8_0500_1000"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":50}]},{"id":48,"name":"الدويسان","fullName":"شركة  الدويسان لتنظيم رحلات الحج","total":50,"buses":1,"ppb":50.0,"hotel":"الشيراتون","area":"أخرى","phone":"97720883","arafatIn":"حافلات","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"قطار","tajeel":"متعجل","timeSlots":[{"label":"8 ذو الحجة 08-16","count":50,"col":"D8_0800_1600"},{"label":"9 ذو الحجة 00-08","count":50,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":50}]},{"id":49,"name":"رواحل","fullName":"شركة رواحل  لتنظيم رحلات الحج","total":50,"buses":1,"ppb":50.0,"hotel":"ملتزم الضيافة","area":"أخرى","phone":"99999577","arafatIn":"حافلات","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"قطار","tajeel":"متعجل","timeSlots":[{"label":"9 ذو الحجة 00-08","count":50,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 18-24","count":50}]},{"id":50,"name":"المحمل","fullName":"شركة المحمل لتنظيم رحلات الحج","total":50,"buses":1,"ppb":50.0,"hotel":"ماريوت جبل عمر","area":"جبل عمر","phone":"55558303","arafatIn":"حافلات","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"9 ذو الحجة 00-08","count":50,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 18-24","count":50}]},{"id":51,"name":"اشكناني الدوليه","fullName":"شركة اشكناني الدوليه لتنظيم رحلات الحج","total":212,"buses":6,"ppb":35.3,"hotel":"نزل النسيم","area":"حي النسيم","phone":"052381088","arafatIn":"حافلات","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"غير محدد","timeSlots":[{"label":"9 ذو الحجة 00-08","count":212,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 18-24","count":212}]},{"id":52,"name":"خورشيد","fullName":"شركة خورشيد لتنظيم رحلات الحج","total":183,"buses":5,"ppb":36.6,"hotel":"فوربوينتس شيراتون","area":"أخرى","phone":"","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"9 ذو الحجة 00-08","count":183,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"11 ذو الحجة 00-06","count":183}]},{"id":53,"name":"البلد الامين","fullName":"شركة البلد الامين لتنظيم رحلات الحج","total":150,"buses":4,"ppb":37.5,"hotel":"فندق روتس - بطحاء قريش - شارع ثوبان النبوي","area":"بطحاء قريش","phone":"009656667155","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"9 ذو الحجة 00-08","count":150,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 00-06","count":150},{"label":"11 ذو الحجة 00-06","count":150}]},{"id":54,"name":"اشكناني النخبة","fullName":"شركة اشكناني النخبة للحج","total":132,"buses":3,"ppb":44.0,"hotel":"صها","area":"أخرى","phone":"0537587831","arafatIn":"حافلات","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"غير محدد","timeSlots":[{"label":"8 ذو الحجة 16-24","count":132,"col":"D8_1600_0000"}],"ifadahSlots":[{"label":"10 ذو الحجة 18-24","count":132}]},{"id":55,"name":"محمد الصالح","fullName":"شركة محمد الصالح لتنظيم رحلات الحج","total":117,"buses":4,"ppb":29.2,"hotel":"فندق درة الجوهرة بطحاء قريش","area":"بطحاء قريش","phone":"98998929","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"9 ذو الحجة 00-08","count":117,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 18-24","count":117}]},{"id":56,"name":"ملك","fullName":"شركة ملك لتنظيم رحلات الحج","total":116,"buses":2,"ppb":58.0,"hotel":"فندق هدن - كدي","area":"كدي","phone":"٩٩٣١١٤٨٩","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"غير محدد","timeSlots":[{"label":"8 ذو الحجة 16-24","count":50,"col":"D8_1600_0000"},{"label":"9 ذو الحجة 00-08","count":66,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"9 ذو الحجة 21-24","count":25},{"label":"11 ذو الحجة 00-06","count":91}]},{"id":57,"name":"اشكناني التميز","fullName":"شركة اشكناني التميز لتنظيم رحلات الحج","total":109,"buses":3,"ppb":36.3,"hotel":"نزل النسيم","area":"حي النسيم","phone":"052381088","arafatIn":"حافلات","arafatOut":"قطار","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"غير محدد","timeSlots":[{"label":"8 ذو الحجة 16-24","count":109,"col":"D8_1600_0000"},{"label":"9 ذو الحجة 00-08","count":109,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 18-24","count":109}]},{"id":58,"name":"خداده","fullName":"شركة خداده لتنظيم رحلات الحج","total":99,"buses":4,"ppb":24.8,"hotel":"فندق الدار البيضاء ( العزيزية )","area":"حي العزيزية","phone":"0545792006","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"سيراً","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"9 ذو الحجة 00-08","count":99,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"11 ذو الحجة 00-06","count":99}]},{"id":59,"name":"الصيدلي","fullName":"شركة الصيدلي لتنظيم رحلات الحج","total":93,"buses":3,"ppb":31.0,"hotel":"شيراتون النسيم فوربوينتس","area":"حي النسيم","phone":"67755755","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"غير محدد","tashreeq1":"حافلات","tajeel":"غير محدد","timeSlots":[{"label":"8 ذو الحجة 16-24","count":93,"col":"D8_1600_0000"}],"ifadahSlots":[{"label":"10 ذو الحجة 12-18","count":93},{"label":"10 ذو الحجة 18-24","count":93}]},{"id":60,"name":"النور","fullName":"شركة النور لتنظيم رحلات الحج","total":77,"buses":2,"ppb":38.5,"hotel":"تايم ربا","area":"أخرى","phone":"0554722938","arafatIn":"حافلات","arafatOut":"مختلط","muzdOut":"سيراً","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"9 ذو الحجة 00-08","count":77,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"11 ذو الحجة 00-06","count":77}]},{"id":61,"name":"الرضا","fullName":"شركه الرضا لتنظيم رحلات الحج","total":69,"buses":2,"ppb":34.5,"hotel":"فندق ميركيور العزيزيه","area":"حي العزيزية","phone":"0531231943","arafatIn":"حافلات","arafatOut":"مختلط","muzdOut":"قطار","tashreeq1":"حافلات","tajeel":"غير محدد","timeSlots":[{"label":"9 ذو الحجة 00-08","count":69,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 12-18","count":69},{"label":"11 ذو الحجة 06-12","count":69}]},{"id":62,"name":"الحرز العالمية","fullName":"شركة الحرز العالمية لتنظيم رحلات الحج","total":56,"buses":4,"ppb":14.0,"hotel":"فندق درة الجوهرة بطحاء قريش","area":"بطحاء قريش","phone":"98998929","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"9 ذو الحجة 00-08","count":56,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 18-24","count":56}]},{"id":63,"name":"الصراف لتنظيم رحلات حج","fullName":"شركة الصراف لتنظيم رحلات حج","total":50,"buses":1,"ppb":50.0,"hotel":"فندق تايم ربا شارع الحج","area":"شارع الحج / وادي جليل","phone":"0592497331","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"حافلات","tashreeq1":"حافلات","tajeel":"غير محدد","timeSlots":[{"label":"8 ذو الحجة 16-24","count":25,"col":"D8_1600_0000"},{"label":"9 ذو الحجة 00-08","count":25,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"10 ذو الحجة 18-24","count":50}]},{"id":64,"name":"خداده التميز","fullName":"شركة خداده التميز لتنظيم رحلات الحج","total":50,"buses":1,"ppb":50.0,"hotel":"فندق الدار البيضاء ( العزيزية )","area":"حي العزيزية","phone":"0545792006","arafatIn":"حافلات","arafatOut":"حافلات","muzdOut":"سيراً","tashreeq1":"حافلات","tajeel":"متعجل","timeSlots":[{"label":"9 ذو الحجة 00-08","count":50,"col":"D9_0000_0800"}],"ifadahSlots":[{"label":"11 ذو الحجة 00-06","count":50}]}],"hotels":[{"name":"فندق دفلي","area":"أخرى","companies":[{"id":1,"name":"الدكتور وليد محمد الكندري","pilgrims":675},{"id":16,"name":"خالد المنصور","pilgrims":155}],"totalPilgrims":830,"totalBuses":21},{"name":"فندق كوبثرون - النسم","area":"حي النسيم","companies":[{"id":2,"name":"مجموعه الكندري","pilgrims":272},{"id":20,"name":"مجموعة صفا","pilgrims":124},{"id":21,"name":"مجموعه النخبه","pilgrims":120},{"id":22,"name":"الابريسم","pilgrims":108},{"id":23,"name":"الفردوس","pilgrims":113}],"totalPilgrims":737,"totalBuses":19},{"name":"بارك ان -رديسون- النسيم","area":"حي النسيم","companies":[{"id":7,"name":"البراك","pilgrims":224},{"id":10,"name":"البراك النخبه","pilgrims":218},{"id":11,"name":"البراك الماسي","pilgrims":217}],"totalPilgrims":659,"totalBuses":14},{"name":"فندق ميركيور - العزيزية الجنوبية","area":"حي العزيزية","companies":[{"id":4,"name":"حملة محمد عودة الجلاسي","pilgrims":225},{"id":5,"name":"فالح الجلاسي","pilgrims":225},{"id":15,"name":"عبد السلام خليفة الشايجي","pilgrims":172}],"totalPilgrims":622,"totalBuses":14},{"name":"جايدن مسار - حي  الرصيفة","area":"الرصيفة","companies":[{"id":12,"name":"عبدالله البراك","pilgrims":216},{"id":18,"name":"الطواف","pilgrims":142}],"totalPilgrims":358,"totalBuses":7},{"name":"نزل النسيم","area":"حي النسيم","companies":[{"id":51,"name":"اشكناني الدوليه","pilgrims":212},{"id":57,"name":"اشكناني التميز","pilgrims":109}],"totalPilgrims":321,"totalBuses":9},{"name":"فندق ميزاب النخبة - مكة المكرمة - حي بطحاء قريش","area":"بطحاء قريش","companies":[{"id":3,"name":"حملة خالد الفحماء","pilgrims":225},{"id":39,"name":"فايز عوض الفحماء","pilgrims":50}],"totalPilgrims":275,"totalBuses":7},{"name":"فندق الجود - بطحاء قريش","area":"بطحاء قريش","companies":[{"id":8,"name":"الجلاسي","pilgrims":223},{"id":45,"name":"السعيد","pilgrims":50}],"totalPilgrims":273,"totalBuses":6},{"name":"فندق روتانا جبل عمر","area":"جبل عمر","companies":[{"id":6,"name":"يوسف حسن الكندري","pilgrims":225}],"totalPilgrims":225,"totalBuses":9},{"name":"فندق ربا تايم - شاع الحج","area":"شارع الحج / وادي جليل","companies":[{"id":9,"name":"العفاسي","pilgrims":222}],"totalPilgrims":222,"totalBuses":4},{"name":"فندق توران - العاصمة المقدسة حي العزيزية شارع الجامعة","area":"حي العزيزية","companies":[{"id":24,"name":"الهدى","pilgrims":112},{"id":26,"name":"التوحيد","pilgrims":102}],"totalPilgrims":214,"totalBuses":6},{"name":"ميتل بطحاء قريش","area":"بطحاء قريش","companies":[{"id":13,"name":"الصعفاق","pilgrims":210}],"totalPilgrims":210,"totalBuses":5},{"name":"ماريوت جبل عمر","area":"جبل عمر","companies":[{"id":29,"name":"مندكار","pilgrims":84},{"id":31,"name":"سعد عودة الجلاسي","pilgrims":68},{"id":50,"name":"المحمل","pilgrims":50}],"totalPilgrims":202,"totalBuses":5},{"name":"فندق فوربوينت - النسم","area":"حي النسيم","companies":[{"id":36,"name":"مجموعة الشايجي","pilgrims":50},{"id":37,"name":"حمد الدوسري","pilgrims":50},{"id":40,"name":"مشاعر","pilgrims":51},{"id":47,"name":"العساكر","pilgrims":50}],"totalPilgrims":201,"totalBuses":4},{"name":"فندق تايم ربا - حى وادى جليل - شارع الحج","area":"شارع الحج / وادي جليل","companies":[{"id":14,"name":"الوسام","pilgrims":199}],"totalPilgrims":199,"totalBuses":5},{"name":"بودل أجياد مكة","area":"أجياد","companies":[{"id":25,"name":"احمد الضويحي","pilgrims":105},{"id":28,"name":"نبيل الياسين","pilgrims":91}],"totalPilgrims":196,"totalBuses":5},{"name":"فوربوينتس شيراتون","area":"أخرى","companies":[{"id":52,"name":"خورشيد","pilgrims":183}],"totalPilgrims":183,"totalBuses":5},{"name":"فندق التامور","area":"أخرى","companies":[{"id":19,"name":"فهد فالح المطيري","pilgrims":126},{"id":34,"name":"المقام","pilgrims":52}],"totalPilgrims":178,"totalBuses":5},{"name":"فندق درة الجوهرة بطحاء قريش","area":"بطحاء قريش","companies":[{"id":55,"name":"محمد الصالح","pilgrims":117},{"id":62,"name":"الحرز العالمية","pilgrims":56}],"totalPilgrims":173,"totalBuses":8},{"name":"فندق روتس - بطحاء قريش - شارع ثوبان النبوي","area":"بطحاء قريش","companies":[{"id":53,"name":"البلد الامين","pilgrims":150}],"totalPilgrims":150,"totalBuses":4},{"name":"فندق الدار البيضاء ( العزيزية )","area":"حي العزيزية","companies":[{"id":58,"name":"خداده","pilgrims":99},{"id":64,"name":"خداده التميز","pilgrims":50}],"totalPilgrims":149,"totalBuses":5},{"name":"فندق الفور بوينت","area":"أخرى","companies":[{"id":17,"name":"داود الكندري","pilgrims":143}],"totalPilgrims":143,"totalBuses":4},{"name":"فندق ملتزم البيت-النسيم","area":"حي النسيم","companies":[{"id":30,"name":"الطبطبائي","pilgrims":70},{"id":32,"name":"مواسم","pilgrims":67}],"totalPilgrims":137,"totalBuses":3},{"name":"صها","area":"أخرى","companies":[{"id":54,"name":"اشكناني النخبة","pilgrims":132}],"totalPilgrims":132,"totalBuses":3},{"name":"فندق هدن - كدي","area":"كدي","companies":[{"id":56,"name":"ملك","pilgrims":116}],"totalPilgrims":116,"totalBuses":2},{"name":"ملتزم الضيافة","area":"أخرى","companies":[{"id":35,"name":"خالد الدواس","pilgrims":52},{"id":49,"name":"رواحل","pilgrims":50}],"totalPilgrims":102,"totalBuses":2},{"name":"فندق التامور العزيزية الجنوبية","area":"حي العزيزية","companies":[{"id":27,"name":"الغربين الماسيه","pilgrims":96}],"totalPilgrims":96,"totalBuses":2},{"name":"شيراتون النسيم فوربوينتس","area":"حي النسيم","companies":[{"id":59,"name":"الصيدلي","pilgrims":93}],"totalPilgrims":93,"totalBuses":3},{"name":"تايم ربا","area":"أخرى","companies":[{"id":60,"name":"النور","pilgrims":77}],"totalPilgrims":77,"totalBuses":2},{"name":"فندق ميركيور العزيزيه","area":"حي العزيزية","companies":[{"id":61,"name":"الرضا","pilgrims":69}],"totalPilgrims":69,"totalBuses":2},{"name":"كورت يارد ماريوت","area":"أخرى","companies":[{"id":33,"name":"عبدالرحمن المنشد","pilgrims":58}],"totalPilgrims":58,"totalBuses":2},{"name":"الجود ريزيدنس- النسيم","area":"حي النسيم","companies":[{"id":38,"name":"عمر الدويسان","pilgrims":50}],"totalPilgrims":50,"totalBuses":1},{"name":"فندق الماريوت","area":"أخرى","companies":[{"id":41,"name":"الردهان لخدمات","pilgrims":50}],"totalPilgrims":50,"totalBuses":2},{"name":"ابراج المريديان مكة","area":"المريديان","companies":[{"id":42,"name":"عبدالمحسن يوسف العبدالمحسن","pilgrims":50}],"totalPilgrims":50,"totalBuses":2},{"name":"فندق تايم ربا ــــ شارع الحج","area":"شارع الحج / وادي جليل","companies":[{"id":43,"name":"البدر السعدون","pilgrims":50}],"totalPilgrims":50,"totalBuses":2},{"name":"فندق ديار الخالدية - شارع إبراهيم الخليل - حي جرهم","area":"جرهم","companies":[{"id":44,"name":"أركان","pilgrims":50}],"totalPilgrims":50,"totalBuses":1},{"name":"فندق إم ملينيوم مكة - شارع إبراهيم الخليل","area":"أخرى","companies":[{"id":46,"name":"احمد السبيعي","pilgrims":50}],"totalPilgrims":50,"totalBuses":2},{"name":"الشيراتون","area":"أخرى","companies":[{"id":48,"name":"الدويسان","pilgrims":50}],"totalPilgrims":50,"totalBuses":1},{"name":"فندق تايم ربا شارع الحج","area":"شارع الحج / وادي جليل","companies":[{"id":63,"name":"الصراف لتنظيم رحلات حج","pilgrims":50}],"totalPilgrims":50,"totalBuses":1}]};
+
+// =========================================================
+// STATE
+// =========================================================
+const state = {
+  currentPage: 'home',
+  searchQuery: '',
+  filter: 'all',
+  sort: 'size',
+  selectedArea: 'الكل',
+  compareA: null,
+  compareB: null,
+  compareSlot: null,
+  modalContext: null,
+};
+
+// =========================================================
+// INIT - run once
+// =========================================================
+function init() {
+  // Hero stats animated
+  animateNumber(document.getElementById('stat-pilgrims'), DATA.totalPilgrims, true);
+  animateNumber(document.getElementById('stat-companies'), DATA.totalCompanies);
+  animateNumber(document.getElementById('stat-buses'), DATA.totalBuses);
+
+  // Bottom nav
+  document.querySelectorAll('.bottomnav-item').forEach(btn => {
+    btn.addEventListener('click', () => goPage(btn.dataset.page));
+  });
+
+  // Filter chips
+  document.querySelectorAll('#filter-chips .chip').forEach(c => {
+    c.addEventListener('click', () => {
+      document.querySelectorAll('#filter-chips .chip').forEach(x => x.classList.remove('active'));
+      c.classList.add('active');
+      state.filter = c.dataset.filter;
+      renderCompanies();
+    });
+  });
+
+  // Sort
+  document.querySelectorAll('#sort-toggle .sort-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('#sort-toggle .sort-btn').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      state.sort = b.dataset.sort;
+      renderCompanies();
+    });
+  });
+
+  // Search
+  document.getElementById('search-input').addEventListener('input', e => {
+    state.searchQuery = e.target.value.trim();
+    renderCompanies();
+  });
+
+  // Render initial pages
+  renderHomePeakChart();
+  renderCompanies();
+  renderHotelsPage();
+  renderChartsPage();
+
+  // Topbar back button
+  document.getElementById('topbar-back').addEventListener('click', () => {
+    goPage('home');
+  });
+
+  // Modal close on backdrop
+  document.getElementById('modal').addEventListener('click', e => {
+    if (e.target.id === 'modal') closeModal();
+  });
+}
+
+// =========================================================
+// NAVIGATION
+// =========================================================
+function goPage(page) {
+  state.currentPage = page;
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.querySelectorAll('.bottomnav-item').forEach(b => {
+    b.classList.toggle('active', b.dataset.page === page);
+  });
+  // Scroll top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Update topbar
+  const titles = {
+    home: 'خطة التفويج',
+    companies: 'الشركات',
+    hotels: 'السكن والفنادق',
+    charts: 'الإحصائيات',
+    compare: 'مقارنة الشركات',
+    insights: 'التحليلات والملاحظات',
+  };
+  document.getElementById('topbar-title').textContent = titles[page] || 'خطة التفويج';
+
+  // Trigger animations on charts page
+  if (page === 'charts') {
+    setTimeout(() => animateChartsPage(), 50);
+  }
+  if (page === 'home') {
+    setTimeout(() => renderHomePeakChart(), 50);
+  }
+  if (page === 'hotels') {
+    setTimeout(() => animateAreaChart(), 50);
+  }
+}
+
+// =========================================================
+// HELPERS
+// =========================================================
+function animateNumber(el, target, comma = false) {
+  const dur = 1100;
+  const start = performance.now();
+  function tick(now) {
+    const t = Math.min(1, (now - start) / dur);
+    const eased = 1 - Math.pow(1 - t, 3);
+    const v = Math.round(target * eased);
+    el.textContent = comma ? v.toLocaleString('en-US') : v;
+    if (t < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+function fmtNum(n) {
+  return Number(n).toLocaleString('en-US');
+}
+
+function sizeCategory(n) {
+  if (n >= 200) return 'large';
+  if (n >= 100) return 'medium';
+  if (n >= 70) return 'mid';
+  return 'small';
+}
+
+// =========================================================
+// HOME - peak chart
+// =========================================================
+function renderHomePeakChart() {
+  const labels = ['7 ذو الحجة\n20-24', '8 ذو الحجة\n00-05', '8 ذو الحجة\n05-10', '8 ذو الحجة\n08-16', '8 ذو الحجة\n16-24', '9 ذو الحجة\n00-08'];
+  const values = [0, 765, 4737, 196, 869, 5457];
+  const max = Math.max(...values);
+  const colors = ['gold', 'gold', 'gold', 'primary', 'primary', 'alert'];
+
+  const html = `
+    <div class="col-chart" id="home-peak-bars">
+      ${values.map((v, i) => `
+        <div class="col-chart-col">
+          <div class="col-chart-bar ${colors[i]}" data-target="${(v / max * 100).toFixed(1)}">
+            ${v > 0 ? `<div class="col-chart-value">${fmtNum(v)}</div>` : ''}
+          </div>
+        </div>
+      `).join('')}
+    </div>
+    <div class="col-chart-labels">
+      ${labels.map(l => `<div class="col-chart-label">${l.replace('\n', '<br>')}</div>`).join('')}
+    </div>
+  `;
+  document.getElementById('home-peak-chart').innerHTML = html;
+
+  // Animate
+  setTimeout(() => {
+    document.querySelectorAll('#home-peak-bars .col-chart-bar').forEach(b => {
+      b.style.height = b.dataset.target + '%';
+    });
+  }, 100);
+}
+
+// =========================================================
+// COMPANIES PAGE
+// =========================================================
+function renderCompanies() {
+  let list = DATA.companies.slice();
+
+  // Search
+  if (state.searchQuery) {
+    const q = state.searchQuery;
+    list = list.filter(c =>
+      c.name.includes(q) || c.fullName.includes(q) || (c.hotel && c.hotel.includes(q))
+    );
+  }
+
+  // Filter
+  if (state.filter === 'large') list = list.filter(c => c.total >= 200);
+  else if (state.filter === 'medium') list = list.filter(c => c.total >= 100 && c.total < 200);
+  else if (state.filter === 'small') list = list.filter(c => c.total < 100);
+  else if (state.filter === 'taajul') list = list.filter(c => c.tajeel === 'متعجل');
+  else if (state.filter === 'taakhur') list = list.filter(c => c.tajeel === 'متأخر');
+  else if (state.filter === 'train') list = list.filter(c =>
+    c.arafatIn === 'قطار' || c.arafatOut === 'قطار' || c.muzdOut === 'قطار' ||
+    c.arafatIn === 'مختلط' || c.arafatOut === 'مختلط' || c.tashreeq1 === 'قطار'
+  );
+
+  // Sort
+  if (state.sort === 'size') list.sort((a, b) => b.total - a.total);
+  else if (state.sort === 'alpha') list.sort((a, b) => a.name.localeCompare(b.name, 'ar'));
+  else if (state.sort === 'buses') list.sort((a, b) => b.buses - a.buses);
+
+  document.getElementById('results-count').textContent = `${list.length} شركة`;
+
+  const html = list.map((c, idx) => {
+    const rank = state.sort === 'size' ? idx + 1 : c.id;
+    const top3 = state.sort === 'size' && idx < 3 ? 'top-3' : '';
+    return `
+      <div class="company-card" onclick="showCompanyDetail(${c.id})">
+        <div class="company-rank ${top3}">${rank}</div>
+        <div class="company-info">
+          <div class="company-name">${c.name}</div>
+          <div class="company-meta">
+            <span class="meta-pill">${c.area}<span class="dot"></span></span>
+            <span class="meta-pill">${c.tajeel}<span class="dot"></span></span>
+            <span class="meta-pill">${c.buses} حافلة</span>
+          </div>
+        </div>
+        <div class="company-count">
+          <div class="company-count-num">${c.total}</div>
+          <div class="company-count-label">حاج</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  document.getElementById('company-list').innerHTML = html || `<div class="empty"><div class="empty-icon">🔍</div><div class="empty-text">ما لقينا نتائج</div></div>`;
+}
+
+// =========================================================
+// COMPANY DETAIL MODAL
+// =========================================================
+function showCompanyDetail(id) {
+  const c = DATA.companies.find(x => x.id === id);
+  if (!c) return;
+
+  const transportTag = (val) => {
+    let cls = '';
+    if (val === 'قطار') cls = 'train';
+    else if (val === 'مختلط') cls = 'late';
+    else if (val === 'حافلات') cls = '';
+    else cls = 'unknown';
+    return `<span class="value tag ${cls}">${val}</span>`;
+  };
+
+  const tajTag = (v) => {
+    if (v === 'متعجل') return `<span class="value tag taj">متعجل</span>`;
+    if (v === 'متأخر') return `<span class="value tag late">متأخر</span>`;
+    return `<span class="value tag unknown">غير محدد</span>`;
+  };
+
+  const html = `
+    <div class="modal-header">
+      <h2>${c.name}</h2>
+      <div class="sub">${c.fullName}</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-stat-row">
+        <div class="modal-stat">
+          <div class="modal-stat-val">${c.total}</div>
+          <div class="modal-stat-lbl">حاج</div>
+        </div>
+        <div class="modal-stat">
+          <div class="modal-stat-val">${c.buses}</div>
+          <div class="modal-stat-lbl">حافلة</div>
+        </div>
+        <div class="modal-stat">
+          <div class="modal-stat-val">${c.ppb}</div>
+          <div class="modal-stat-lbl">حاج/حافلة</div>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <h4>السكن</h4>
+        <div class="detail-row">
+          <span class="label">الفندق</span>
+          <span class="value" style="text-align:left;font-size:12px">${c.hotel}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">المنطقة</span>
+          <span class="value tag">${c.area}</span>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <h4>وسائل النقل</h4>
+        <div class="detail-row">
+          <span class="label">مكة → عرفات</span>
+          ${transportTag(c.arafatIn)}
+        </div>
+        <div class="detail-row">
+          <span class="label">عرفات → مزدلفة</span>
+          ${transportTag(c.arafatOut)}
+        </div>
+        <div class="detail-row">
+          <span class="label">مزدلفة → الحرم</span>
+          ${transportTag(c.muzdOut)}
+        </div>
+        <div class="detail-row">
+          <span class="label">أيام التشريق</span>
+          ${transportTag(c.tashreeq1)}
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <h4>التشريق والتعجل</h4>
+        <div class="detail-row">
+          <span class="label">الاختيار</span>
+          ${tajTag(c.tajeel)}
+        </div>
+      </div>
+
+      ${c.timeSlots.length ? `
+      <div class="detail-section">
+        <h4>نوافذ التصعيد إلى عرفات</h4>
+        ${c.timeSlots.map(s => `
+          <div class="timeline-item">
+            <span class="timeline-time">${s.label}</span>
+            <span class="timeline-count">${s.count} حاج</span>
+          </div>
+        `).join('')}
+      </div>
+      ` : ''}
+
+      ${c.ifadahSlots.length ? `
+      <div class="detail-section">
+        <h4>نوافذ طواف الإفاضة</h4>
+        ${c.ifadahSlots.map(s => `
+          <div class="timeline-item">
+            <span class="timeline-time">${s.label}</span>
+            <span class="timeline-count">${s.count} حاج</span>
+          </div>
+        `).join('')}
+      </div>
+      ` : ''}
+
+      <div class="detail-section">
+        <h4>التواصل</h4>
+        <div class="detail-row">
+          <span class="label">ضابط الاتصال</span>
+          <span class="value" style="text-align:left;font-size:12px">${c.phone || '—'}</span>
+        </div>
+      </div>
+
+      <div class="compare-actions">
+        <button class="compare-action-btn" onclick="addToCompare(${c.id}); closeModal();">⚖️ أضف للمقارنة</button>
+        <button class="compare-action-btn secondary" onclick="closeModal()">إغلاق</button>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('modal-content').innerHTML = html;
+  document.getElementById('modal').classList.add('active');
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('active');
+}
+
+// =========================================================
+// HOTELS PAGE
+// =========================================================
+function renderHotelsPage() {
+  // Group by area
+  const byArea = {};
+  DATA.companies.forEach(c => {
+    if (!byArea[c.area]) byArea[c.area] = { name: c.area, pilgrims: 0, hotels: new Set(), companies: 0 };
+    byArea[c.area].pilgrims += c.total;
+    byArea[c.area].hotels.add(c.hotel);
+    byArea[c.area].companies++;
+  });
+  const areas = Object.values(byArea).sort((a, b) => b.pilgrims - a.pilgrims);
+
+  // Area chart - bar style
+  const total = DATA.totalPilgrims;
+  const maxArea = Math.max(...areas.map(a => a.pilgrims));
+  const colorPalette = ['gold', 'primary', 'emerald', 'gold', 'primary', 'emerald', 'gold', 'primary', 'emerald', 'gold', 'primary'];
+
+  const chartHtml = `
+    <div class="chart-card-header">
+      <div>
+        <div class="chart-card-title">الحجاج حسب المنطقة</div>
+        <div class="chart-card-sub">${areas.length} منطقة - 8,000 حاج</div>
+      </div>
+    </div>
+    <div id="area-bars">
+      ${areas.map((a, i) => `
+        <div class="bar-row">
+          <div class="bar-row-header">
+            <span class="bar-row-label">${a.name}</span>
+            <span class="bar-row-value">${a.pilgrims} حاج <span style="color:var(--text-muted);font-weight:600;font-size:11px">(${(a.pilgrims/total*100).toFixed(0)}٪)</span></span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill ${colorPalette[i]}" data-target="${(a.pilgrims / maxArea * 100).toFixed(1)}"></div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+  document.getElementById('area-chart-card').innerHTML = chartHtml;
+
+  // Area tabs
+  const tabs = ['الكل', ...areas.map(a => a.name)];
+  document.getElementById('area-tabs').innerHTML = tabs.map(t => `
+    <button class="chip ${state.selectedArea === t ? 'active' : ''}" data-area="${t}">${t}</button>
+  `).join('');
+  document.querySelectorAll('#area-tabs .chip').forEach(c => {
+    c.addEventListener('click', () => {
+      state.selectedArea = c.dataset.area;
+      renderHotelsPage();
+    });
+  });
+
+  // Hotel list filtered by area
+  let hotels = DATA.hotels;
+  if (state.selectedArea !== 'الكل') {
+    hotels = hotels.filter(h => h.area === state.selectedArea);
+  }
+
+  document.getElementById('hotel-list').innerHTML = hotels.map(h => `
+    <div class="hotel-card" onclick="showHotelDetail('${h.name.replace(/'/g, "\\'")}')">
+      <div class="hotel-header">
+        <div class="hotel-name">${h.name}</div>
+        <span class="hotel-area-tag">${h.area}</span>
+      </div>
+      <div class="hotel-stats">
+        <div class="hotel-stat-mini">
+          <div class="v">${h.totalPilgrims}</div>
+          <div class="l">حاج</div>
+        </div>
+        <div class="hotel-stat-mini">
+          <div class="v">${h.companies.length}</div>
+          <div class="l">شركة</div>
+        </div>
+        <div class="hotel-stat-mini">
+          <div class="v">${h.totalBuses}</div>
+          <div class="l">حافلة</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function animateAreaChart() {
+  document.querySelectorAll('#area-bars .bar-fill').forEach(b => {
+    b.style.width = b.dataset.target + '%';
+  });
+}
+
+function showHotelDetail(name) {
+  const h = DATA.hotels.find(x => x.name === name);
+  if (!h) return;
+
+  const html = `
+    <div class="modal-header">
+      <h2>${h.name}</h2>
+      <div class="sub"><span class="hotel-area-tag" style="display:inline-block">${h.area}</span></div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-stat-row">
+        <div class="modal-stat">
+          <div class="modal-stat-val">${h.totalPilgrims}</div>
+          <div class="modal-stat-lbl">حاج</div>
+        </div>
+        <div class="modal-stat">
+          <div class="modal-stat-val">${h.companies.length}</div>
+          <div class="modal-stat-lbl">شركة</div>
+        </div>
+        <div class="modal-stat">
+          <div class="modal-stat-val">${h.totalBuses}</div>
+          <div class="modal-stat-lbl">حافلة</div>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <h4>الشركات في هذا السكن</h4>
+        <div class="hotel-companies-list">
+          ${h.companies.map(co => `
+            <div class="hotel-company-chip" onclick="showCompanyDetail(${co.id})">
+              <span style="font-weight:700">${co.name}</span>
+              <span style="color:var(--gold);font-weight:800">${co.pilgrims} حاج</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('modal-content').innerHTML = html;
+  document.getElementById('modal').classList.add('active');
+}
+
+// =========================================================
+// CHARTS PAGE
+// =========================================================
+function renderChartsPage() {
+  // Size distribution
+  const sizes = { 'كبيرة (200+)': 0, 'متوسطة (100-199)': 0, 'صغيرة (70-99)': 0, 'صغيرة جداً (50-69)': 0 };
+  DATA.companies.forEach(c => {
+    if (c.total >= 200) sizes['كبيرة (200+)']++;
+    else if (c.total >= 100) sizes['متوسطة (100-199)']++;
+    else if (c.total >= 70) sizes['صغيرة (70-99)']++;
+    else sizes['صغيرة جداً (50-69)']++;
+  });
+
+  document.getElementById('size-chart').innerHTML = `
+    <div class="chart-card-header">
+      <div>
+        <div class="chart-card-title">توزيع الشركات حسب الحجم</div>
+        <div class="chart-card-sub">من 64 شركة</div>
+      </div>
+      <span class="chart-tag">حجم</span>
+    </div>
+    ${Object.entries(sizes).map(([k, v], i) => {
+      const max = Math.max(...Object.values(sizes));
+      const cls = ['gold', 'primary', 'emerald', 'gold'][i];
+      return `
+        <div class="bar-row">
+          <div class="bar-row-header">
+            <span class="bar-row-label">${k}</span>
+            <span class="bar-row-value">${v} شركة</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill ${cls}" data-target="${(v / max * 100).toFixed(1)}"></div>
+          </div>
+        </div>
+      `;
+    }).join('')}
+  `;
+
+  // Tajeel donut
+  const tajCounts = { 'متعجل': 0, 'متأخر': 0, 'غير محدد': 0 };
+  DATA.companies.forEach(c => { tajCounts[c.tajeel] = (tajCounts[c.tajeel] || 0) + c.total; });
+  const tajTotal = Object.values(tajCounts).reduce((a, b) => a + b, 0);
+  document.getElementById('tajeel-chart').innerHTML = `
+    <div class="chart-card-header">
+      <div>
+        <div class="chart-card-title">التعجل أم التأخر</div>
+        <div class="chart-card-sub">عدد الحجاج لكل اختيار</div>
+      </div>
+      <span class="chart-tag">قرار</span>
+    </div>
+    <div class="donut-wrap">
+      ${donutSvg([
+        { val: tajCounts['متعجل'], color: '#C9A961' },
+        { val: tajCounts['متأخر'], color: '#1F2D5C' },
+        { val: tajCounts['غير محدد'], color: '#98A0B0' },
+      ], tajTotal, fmtNum(tajTotal), 'حاج')}
+      <div class="donut-legend">
+        ${Object.entries(tajCounts).map(([k, v], i) => `
+          <div class="donut-legend-item">
+            <span class="donut-dot" style="background:${['#C9A961', '#1F2D5C', '#98A0B0'][i]}"></span>
+            <span class="donut-legend-text">${k}</span>
+            <span class="donut-legend-val">${(v/tajTotal*100).toFixed(0)}٪</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+
+  // Transport stages (stacked-style bars)
+  const stages = [
+    { label: 'مكة → عرفات', key: 'arafatIn' },
+    { label: 'عرفات → مزدلفة', key: 'arafatOut' },
+    { label: 'مزدلفة → الحرم', key: 'muzdOut' },
+    { label: 'أيام التشريق', key: 'tashreeq1' },
+  ];
+  const transportRows = stages.map(s => {
+    const counts = { 'حافلات': 0, 'قطار': 0, 'مختلط': 0, 'أخرى': 0 };
+    DATA.companies.forEach(c => {
+      const v = c[s.key] || 'أخرى';
+      if (counts[v] !== undefined) counts[v]++;
+      else counts['أخرى']++;
+    });
+    return { label: s.label, ...counts };
+  });
+
+  document.getElementById('transport-chart').innerHTML = `
+    <div class="chart-card-header">
+      <div>
+        <div class="chart-card-title">وسائل النقل في كل مرحلة</div>
+        <div class="chart-card-sub">عدد الشركات (من 64)</div>
+      </div>
+      <span class="chart-tag">نقل</span>
+    </div>
+    ${transportRows.map(r => {
+      const total = 64;
+      return `
+        <div class="bar-row">
+          <div class="bar-row-header">
+            <span class="bar-row-label">${r.label}</span>
+            <span class="bar-row-value" style="font-size:11px;color:var(--text-soft);font-weight:600">
+              <span style="color:var(--gold);font-weight:800">${r['حافلات']}</span> حافلات،
+              <span style="color:var(--primary);font-weight:800">${r['قطار']}</span> قطار
+            </span>
+          </div>
+          <div class="bar-track" style="display:flex;background:var(--surface-2)">
+            <div class="bar-fill" data-target="${(r['حافلات']/total*100).toFixed(1)}" style="border-radius:6px 0 0 6px"></div>
+            <div class="bar-fill primary" data-target="${(r['قطار']/total*100).toFixed(1)}" style="border-radius:0"></div>
+            <div class="bar-fill emerald" data-target="${(r['مختلط']/total*100).toFixed(1)}" style="border-radius:0 6px 6px 0"></div>
+          </div>
+        </div>
+      `;
+    }).join('')}
+    <div style="display:flex;gap:14px;margin-top:14px;padding-top:12px;border-top:1px dashed var(--border)">
+      <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-soft)"><span style="width:10px;height:10px;border-radius:3px;background:var(--gold)"></span>حافلات</div>
+      <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-soft)"><span style="width:10px;height:10px;border-radius:3px;background:var(--primary)"></span>قطار</div>
+      <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-soft)"><span style="width:10px;height:10px;border-radius:3px;background:var(--emerald)"></span>مختلط</div>
+    </div>
+  `;
+
+  // Ifadah chart - vertical bars
+  const ifadahData = [
+    { label: '9\n21-24', val: 716 },
+    { label: '10\n00-06', val: 5227 },
+    { label: '10\n06-12', val: 986 },
+    { label: '10\n12-18', val: 162 },
+    { label: '10\n18-24', val: 1246 },
+    { label: '11\n00-06', val: 750 },
+    { label: '11\n06-12', val: 995 },
+    { label: '11\n18-12', val: 1191 },
+    { label: '11\n00-18', val: 571 },
+  ];
+  const ifMax = Math.max(...ifadahData.map(d => d.val));
+  const ifColors = ['primary', 'alert', 'gold', 'gold', 'gold', 'emerald', 'emerald', 'emerald', 'emerald'];
+  document.getElementById('ifadah-chart').innerHTML = `
+    <div class="chart-card-header">
+      <div>
+        <div class="chart-card-title">نوافذ طواف الإفاضة</div>
+        <div class="chart-card-sub">عدد الحجاج لكل نافذة</div>
+      </div>
+      <span class="chart-tag">إفاضة</span>
+    </div>
+    <div class="col-chart">
+      ${ifadahData.map((d, i) => `
+        <div class="col-chart-col">
+          <div class="col-chart-bar ${ifColors[i]}" data-target="${(d.val / ifMax * 100).toFixed(1)}">
+            <div class="col-chart-value">${fmtNum(d.val)}</div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+    <div class="col-chart-labels">
+      ${ifadahData.map(d => `<div class="col-chart-label">${d.label.replace('\n', '<br>')}</div>`).join('')}
+    </div>
+  `;
+
+  // Ascent chart
+  const ascentData = [
+    { label: '7\n20-24', val: 0 },
+    { label: '8\n00-05', val: 765 },
+    { label: '8\n05-10', val: 4737 },
+    { label: '8\n08-16', val: 196 },
+    { label: '8\n16-24', val: 869 },
+    { label: '9\n00-08', val: 5457 },
+  ];
+  const asMax = Math.max(...ascentData.map(d => d.val));
+  const asColors = ['gold', 'gold', 'gold', 'primary', 'primary', 'alert'];
+  document.getElementById('ascent-chart').innerHTML = `
+    <div class="chart-card-header">
+      <div>
+        <div class="chart-card-title">التصعيد إلى عرفات</div>
+        <div class="chart-card-sub">68٪ من الحجاج في النافذة الأخيرة</div>
+      </div>
+      <span class="chart-tag">ذروة</span>
+    </div>
+    <div class="col-chart">
+      ${ascentData.map((d, i) => `
+        <div class="col-chart-col">
+          <div class="col-chart-bar ${asColors[i]}" data-target="${(d.val / asMax * 100).toFixed(1)}">
+            ${d.val ? `<div class="col-chart-value">${fmtNum(d.val)}</div>` : ''}
+          </div>
+        </div>
+      `).join('')}
+    </div>
+    <div class="col-chart-labels">
+      ${ascentData.map(d => `<div class="col-chart-label">${d.label.replace('\n', '<br>')}</div>`).join('')}
+    </div>
+  `;
+}
+
+function animateChartsPage() {
+  document.querySelectorAll('#page-charts .bar-fill').forEach(b => {
+    if (b.dataset.target) b.style.width = b.dataset.target + '%';
+  });
+  document.querySelectorAll('#page-charts .col-chart-bar').forEach(b => {
+    b.style.height = b.dataset.target + '%';
+  });
+  // Animate donut
+  document.querySelectorAll('#page-charts .donut-segment').forEach(seg => {
+    const v = seg.dataset.target;
+    if (v) seg.style.strokeDasharray = v + ' ' + (314 - parseFloat(v));
+  });
+}
+
+// =========================================================
+// DONUT SVG generator
+// =========================================================
+function donutSvg(parts, total, centerVal, centerLbl) {
+  const r = 50;
+  const c = 2 * Math.PI * r; // ~314
+  let offset = 0;
+  const segs = parts.map(p => {
+    const len = (p.val / total) * c;
+    const seg = `<circle class="donut-segment" cx="60" cy="60" r="${r}" stroke="${p.color}" stroke-dasharray="0 ${c}" data-target="${len.toFixed(2)}" stroke-dashoffset="${-offset}" />`;
+    offset += len;
+    return seg;
+  }).join('');
+
+  return `
+    <div class="donut">
+      <svg viewBox="0 0 120 120">${segs}</svg>
+      <div class="donut-center">
+        <div class="donut-center-value">${centerVal}</div>
+        <div class="donut-center-label">${centerLbl}</div>
+      </div>
+    </div>
+  `;
+}
+
+// =========================================================
+// COMPARE
+// =========================================================
+function openCompanyPicker(slot) {
+  state.compareSlot = slot;
+  // Show company picker as modal
+  const list = DATA.companies.slice().sort((a, b) => b.total - a.total);
+  const html = `
+    <div class="modal-header">
+      <h2>اختر شركة</h2>
+      <div class="sub">${list.length} شركة متاحة</div>
+    </div>
+    <div class="modal-body">
+      <div class="search-bar" style="margin-bottom:10px">
+        <input type="text" class="search-input" id="picker-search" placeholder="ابحث...">
+        <span class="search-icon">🔍</span>
+      </div>
+      <div class="company-list" id="picker-list">
+        ${list.map((c, i) => `
+          <div class="company-card" onclick="selectForCompare(${c.id})">
+            <div class="company-rank ${i < 3 ? 'top-3' : ''}">${i + 1}</div>
+            <div class="company-info">
+              <div class="company-name">${c.name}</div>
+              <div class="company-meta">
+                <span class="meta-pill">${c.area}</span>
+              </div>
+            </div>
+            <div class="company-count">
+              <div class="company-count-num">${c.total}</div>
+              <div class="company-count-label">حاج</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+  document.getElementById('modal-content').innerHTML = html;
+  document.getElementById('modal').classList.add('active');
+
+  // Picker search
+  document.getElementById('picker-search').addEventListener('input', e => {
+    const q = e.target.value.trim();
+    const filtered = q ? list.filter(c => c.name.includes(q) || c.fullName.includes(q)) : list;
+    document.getElementById('picker-list').innerHTML = filtered.map((c, i) => `
+      <div class="company-card" onclick="selectForCompare(${c.id})">
+        <div class="company-rank ${i < 3 ? 'top-3' : ''}">${i + 1}</div>
+        <div class="company-info">
+          <div class="company-name">${c.name}</div>
+          <div class="company-meta">
+            <span class="meta-pill">${c.area}</span>
+          </div>
+        </div>
+        <div class="company-count">
+          <div class="company-count-num">${c.total}</div>
+          <div class="company-count-label">حاج</div>
+        </div>
+      </div>
+    `).join('') || `<div class="empty"><div class="empty-text">ما لقينا نتائج</div></div>`;
+  });
+}
+
+function selectForCompare(id) {
+  const c = DATA.companies.find(x => x.id === id);
+  if (state.compareSlot === 'a') state.compareA = c;
+  else state.compareB = c;
+  closeModal();
+  updateCompareUI();
+}
+
+function addToCompare(id) {
+  // Add to first empty slot
+  if (!state.compareA) state.compareA = DATA.companies.find(x => x.id === id);
+  else if (!state.compareB) state.compareB = DATA.companies.find(x => x.id === id);
+  else state.compareB = DATA.companies.find(x => x.id === id);
+  goPage('compare');
+  updateCompareUI();
+}
+
+function clearCompareSlot(slot) {
+  if (slot === 'a') state.compareA = null;
+  else state.compareB = null;
+  updateCompareUI();
+}
+
+function updateCompareUI() {
+  const slotA = document.getElementById('slot-a');
+  const slotB = document.getElementById('slot-b');
+
+  if (state.compareA) {
+    slotA.classList.add('filled');
+    slotA.innerHTML = `
+      <div style="flex:1;text-align:right">
+        <div style="font-size:13px;font-weight:800;color:var(--primary);line-height:1.3">${state.compareA.name}</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:3px">${state.compareA.total} حاج</div>
+      </div>
+      <button onclick="event.stopPropagation();clearCompareSlot('a')" style="background:var(--surface-2);border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;color:var(--text-muted);font-size:14px">×</button>
+    `;
+  } else {
+    slotA.classList.remove('filled');
+    slotA.innerHTML = `<div class="plus">+</div><div class="add-text">اختر الشركة الأولى</div>`;
+  }
+
+  if (state.compareB) {
+    slotB.classList.add('filled');
+    slotB.innerHTML = `
+      <div style="flex:1;text-align:right">
+        <div style="font-size:13px;font-weight:800;color:var(--primary);line-height:1.3">${state.compareB.name}</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:3px">${state.compareB.total} حاج</div>
+      </div>
+      <button onclick="event.stopPropagation();clearCompareSlot('b')" style="background:var(--surface-2);border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;color:var(--text-muted);font-size:14px">×</button>
+    `;
+  } else {
+    slotB.classList.remove('filled');
+    slotB.innerHTML = `<div class="plus">+</div><div class="add-text">اختر الشركة الثانية</div>`;
+  }
+
+  const results = document.getElementById('compare-results');
+  if (state.compareA && state.compareB) {
+    const a = state.compareA, b = state.compareB;
+    const diff = (x, y) => x === y ? '=' : (x > y ? '↑' : '↓');
+    const rows = [
+      { label: 'عدد الحجاج', a: a.total, b: b.total, num: true },
+      { label: 'عدد الحافلات', a: a.buses, b: b.buses, num: true },
+      { label: 'حاج لكل حافلة', a: a.ppb, b: b.ppb, num: true },
+      { label: 'المنطقة', a: a.area, b: b.area },
+      { label: 'الفندق', a: a.hotel, b: b.hotel },
+      { label: 'مكة → عرفات', a: a.arafatIn, b: b.arafatIn },
+      { label: 'عرفات → مزدلفة', a: a.arafatOut, b: b.arafatOut },
+      { label: 'مزدلفة → الحرم', a: a.muzdOut, b: b.muzdOut },
+      { label: 'التعجل', a: a.tajeel, b: b.tajeel },
+    ];
+
+    results.innerHTML = rows.map(r => `
+      <div class="compare-attr">${r.label}</div>
+      <div class="compare-row-result">
+        <div class="compare-cell">
+          <div class="compare-cell-val" style="font-size:${r.num ? '20px' : '13px'};color:${r.num && r.a >= r.b ? 'var(--gold)' : 'var(--primary)'}">${r.a}</div>
+        </div>
+        <div class="compare-cell">
+          <div class="compare-cell-val" style="font-size:${r.num ? '20px' : '13px'};color:${r.num && r.b >= r.a ? 'var(--gold)' : 'var(--primary)'}">${r.b}</div>
+        </div>
+      </div>
+    `).join('');
+  } else {
+    results.innerHTML = `<div class="empty"><div class="empty-icon">⚖️</div><div class="empty-text">اختر شركتين لبدء المقارنة</div></div>`;
+  }
+}
+
+// =========================================================
+// START
+// =========================================================
+init();
+updateCompareUI();
+</script>
+
+</body>
+</html>
